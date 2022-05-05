@@ -1,0 +1,102 @@
+.main__header
+  position: relative
+  height: calc( 100vh - 80px )
+.main__image,
+.main__image img
+  width: 100%
+  height: 100%
+.main__image img
+  object-fit: cover
+.main__image
+  position: relative
+  &::after
+    content: ""
+    background-color: rgba(24, 62, 122, 0.4)
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 100
+.mainContent
+  margin: 0 0 0 50px
+  position: absolute
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  justify-content: center
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 100
+  color: #fff
+  .main__title
+    overflow: hidden
+    height: 90px
+    max-width: 750px
+    position: relative
+    .titleItem
+      font-weight: bold
+      width: 750px
+      font-size: 2.25rem
+      margin: 0 0 25px 0
+      &:nth-child(1)
+        animation: firstTitle 10s infinite
+      &:nth-child(2)
+        animation: secondTitle 10s infinite
+      &:nth-child(3)
+        animation: thirdTitle 10s infinite
+      &:nth-child(2),
+      &:nth-child(3)
+        position: absolute
+        top: 0
+        left: 0
+  .main__text
+    margin: 0 0 0 0
+    font-size: 18px
+    font-weight: Regular
+    max-width: 728px
+@keyframes firstTitle
+  0%
+    transform: translateY(0)
+    opacity: 1
+  30%
+    transform: translateY(100%)
+    opacity: 0
+  60%
+    transform: translateY(-100%)
+    opacity: 0
+  90%
+    transform: translateY(0)
+    opacity: 1
+@keyframes secondTitle
+  0%
+    transform: translateY(-100%)
+    opacity: 0
+  30%
+    transform: translateY(0)
+    opacity: 1
+  60%
+    transform: translateY(100%)
+    opacity: 0
+  100%
+    transform: translateY(-100%)
+    opacity: 0
+@keyframes thirdTitle
+  0%
+    transform: translateY(-100%)
+    opacity: 0
+  30%
+    transform: translateY(-100%)
+    opacity: 0
+  60%
+    transform: translateY(0)
+    opacity: 1
+  90%
+    transform: translateY(100%)
+    opacity: 0
+  100%
+    transform: translateY(-100%)
+    opacity: 0
+
