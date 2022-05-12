@@ -10,11 +10,24 @@ function Navbar() {
       <div className={styles.container}>
         <div className={styles.navbar}>
           <nav className={styles.nav}>
-            {nav.map(({ name, href }) => {
+            {nav.map(({ name, href, doughter }) => {
               return (
-                <Link key={href} href={href}>
-                  <a className={styles.nav__Link}>{name}</a>
-                </Link>
+                <span className={styles.list__item} key={href}>
+                  <Link href={href}>
+                    <a className={styles.nav__Link}> {name} </a>
+                  </Link>
+                  <ul className={styles.sub__linkList}>
+                    {doughter.map(({ name, href }) => {
+                      return (
+                        <li key={href} className={styles.sub__linkItem}>
+                          <Link href={href}>
+                            <a className={styles.subNav__link}>{name}</a>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </span>
               );
             })}
           </nav>
@@ -22,11 +35,24 @@ function Navbar() {
             <img src={logoImg.src} alt="LogoImg" />
           </div>
           <nav className={styles.nav}>
-            {secondNav.map(({ name, href }) => {
+            {secondNav.map(({ name, href, doughter }) => {
               return (
-                <Link key={href} href={href}>
-                  <a className={styles.nav__Link}>{name}</a>
-                </Link>
+                <span className={styles.list__item} key={href}>
+                  <Link href={href}>
+                    <a className={styles.nav__Link}> {name} </a>
+                  </Link>
+                  <ul className={styles.sub__linkList}>
+                    {doughter.map(({ name, href }) => {
+                      return (
+                        <li key={href} className={styles.sub__linkItem}>
+                          <Link href={href}>
+                            <a className={styles.subNav__link}>{name}</a>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </span>
               );
             })}
           </nav>

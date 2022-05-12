@@ -6,32 +6,70 @@
   align-items: center
   justify-content: space-between
   height: 80px
-  font-weight: Regular
-  overflow: hidden
+  // overflow: hidden
 .nav
-  font-size: 14px
   min-width: fit-content
-.nav__Link
-  padding: 32px 20px 31px
+.sub__linkList
+  position: absolute
+  top: 100%
+  left: 0
+  min-width: 350px
+  // display: none
+  opacity: 0
+  z-index: -1
+  padding: 4px 0 0
+.sub__linkItem
+  background-color: #fff
+  font-weight: 500
+  padding: 10px 20px 5px 20px
+  transition-property: padding
+  transition-duration: 500ms
+  transition-delay: 0ms
+  text-transform: capitalize
+  font-family: 'Montserrat', sans-serif
+  font-weight: 500
+  &:first-child
+    padding: 15px 20px 5px 20px
+  &:last-child
+    padding: 10px 20px 15px 20px
+
+.sub__linkList li
+  list-style: none
+.list__item
+  font-size: 14px
+  padding: 33px 1.25rem 2rem
   transition: all .3s
   position: relative
-  font-weight: regular
   &::before
-    content: ""
+    content: " "
     position: absolute
     top: 0
     left: 0
     width: 100%
     height: 100%
     background-color: #0C4083
-    transform: translateY(100%)
-    transition: all .3s
     z-index: -1
+    opacity: 0
+    transform: translateY(100%)
+    transition-property: transform, opacity
+    transition-duration: 300ms, 0ms
+    transition-delay: 0ms, 300ms,          
   &:hover::before
+
     transform: translateY(0)
+    opacity: 1
+    transition-property: transform, opacity
+    transition-duration: 300ms, 0ms
+    transition-delay: 0ms, 0ms,
   &:hover
     color: #fff
-
+  &:hover .sub__linkList
+    // display: block
+    opacity: 1
+    z-index: 4
+    color: #000
+  // &:hover .sub__linkItem
+  //   padding: 5px 20px 5px 20px
 .logo
   width: 100%
   display: flex
