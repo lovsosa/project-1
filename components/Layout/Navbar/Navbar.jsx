@@ -43,13 +43,15 @@ function Navbar() {
                   </Link>
                   <ul className={styles.sub__linkList}>
                     {doughter.map(({ name, href }) => {
-                      return (
-                        <li key={href} className={styles.sub__linkItem}>
-                          <Link href={href}>
-                            <a className={styles.subNav__link}>{name}</a>
-                          </Link>
-                        </li>
-                      );
+                      if (name !== "ВАКАНСИИ") {
+                        return (
+                          <li key={href} className={styles.sub__linkItem}>
+                            <Link href={href}>
+                              <a className={styles.subNav__link}>{name}</a>
+                            </Link>
+                          </li>
+                        );
+                      }
                     })}
                   </ul>
                 </span>
