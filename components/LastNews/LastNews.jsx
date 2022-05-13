@@ -24,7 +24,7 @@ export default function LastNews() {
     <section className={styles.lastNews}>
       <h2 className={styles.lastNews__title}>НОВОСТИ</h2>
       <ul className={styles.lastNews__container}>
-        {news.map(({ newsDescription, postDate, image, id }) => {
+        {news.map(({ postDescription, postDate, image, id }) => {
           return (
             <li key={id} className={styles.lastNews__cart}>
               <img
@@ -33,7 +33,7 @@ export default function LastNews() {
                 alt={image.name}
               />
               <div className={styles.newsCart__content}>
-                <p>{newsDescription}</p>
+                <p>{postDescription}</p>
                 <div className={styles.newsCart__contentDes}>
                   <span className={styles.cartData}>{postDate}</span>
                   <button className={styles.cart__btn}>

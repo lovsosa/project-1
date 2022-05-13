@@ -1,6 +1,6 @@
+import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.sass";
-import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper";
@@ -63,6 +63,38 @@ const sponsors = [
     id: "13",
   },
 ];
+const [mainTitle, setMainTitle] = useState([
+  {
+    content: "fasdf f asdfs afwef dfg asdfge xdfasdf awe",
+    active: true,
+    id: 1,
+  },
+  {
+    content: "asdfwe fadf awe fsadf asdwae fasf asf wef",
+    active: false,
+    id: 2,
+  },
+  {
+    content: "asdfawef asef sdfcfgweaqft  FDGHRSEHG ER",
+    active: false,
+    id: 3,
+  },
+]);
+
+setInterval(() => {
+  console.log("alo");
+  mainTitle.forEach(({ content, active, id }) => {
+    if (id === 1) {
+      setMainTitle([
+        {
+          active: true,
+          id: 2,
+        },
+        ...mainTitle,
+      ]);
+    }
+  });
+}, 3000);
 export default function Home() {
   return (
     <div className={styles.body}>

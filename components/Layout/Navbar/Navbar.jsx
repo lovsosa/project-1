@@ -12,14 +12,14 @@ function Navbar() {
           <nav className={styles.nav}>
             {nav.map(({ name, href, doughter }) => {
               return (
-                <span className={styles.list__item} key={href}>
+                <span className={styles.nav__item} key={href}>
                   <Link href={href}>
                     <a className={styles.nav__Link}> {name} </a>
                   </Link>
                   <ul className={styles.sub__linkList}>
                     {doughter.map(({ name, href }) => {
                       return (
-                        <li key={href} className={styles.sub__linkItem}>
+                        <li key={href}>
                           <Link href={href}>
                             <a className={styles.subNav__link}>{name}</a>
                           </Link>
@@ -37,7 +37,7 @@ function Navbar() {
           <nav className={styles.nav}>
             {secondNav.map(({ name, href, doughter }) => {
               return (
-                <span className={styles.list__item} key={href}>
+                <span className={styles.nav__item} key={href}>
                   <Link href={href}>
                     <a className={styles.nav__Link}> {name} </a>
                   </Link>
@@ -45,7 +45,7 @@ function Navbar() {
                     {doughter.map(({ name, href }) => {
                       if (name !== "ВАКАНСИИ") {
                         return (
-                          <li key={href} className={styles.sub__linkItem}>
+                          <li key={href}>
                             <Link href={href}>
                               <a className={styles.subNav__link}>{name}</a>
                             </Link>
