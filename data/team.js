@@ -1,19 +1,19 @@
 export const team = [
   {
-    teamName: "Нур-Баткен", 
+    teamName: "Нур-Баткен",
     i: 0,
     rg: 0,
     o: 0,
     imgSrc: "/images/team/nur__batken.png",
-    teamId: "Nur-Batken"
+    teamId: "1",
   },
   {
-    teamName: "Нефтчи", 
+    teamName: "Нефтчи",
     i: 0,
     rg: 0,
     o: 0,
     imgSrc: "/images/team/Neftchi.png",
-    teamId: "Oil"
+    teamId: "2",
   },
   {
     teamName: "Абдыш-Ата",
@@ -21,33 +21,32 @@ export const team = [
     rg: 0,
     o: 0,
     imgSrc: "/images/team/new-logo.png",
-    teamId: "Abdsh-Ata"
+    teamId: "3",
   },
   {
-    teamName: "Дордой", 
+    teamName: "Дордой",
     i: 0,
     rg: 0,
     o: 0,
     imgSrc: "/images/team/dordoi.png",
-    teamId: "Dordoi"
+    teamId: "4",
   },
 
-  
   {
-    teamName: "Нур-Баткен", 
+    teamName: "Нур-Баткен",
     i: 0,
     rg: 0,
     o: 0,
     imgSrc: "/images/team/nur__batken.png",
-    teamId: "Nur-Batkegkhjn"
+    teamId: "5",
   },
   {
-    teamName: "Нефтчи", 
+    teamName: "Нефтчи",
     i: 0,
     rg: 0,
     o: 0,
     imgSrc: "/images/team/Neftchi.png",
-    teamId: "Ogfhjkgjhil"
+    teamId: "6",
   },
   {
     teamName: "Абдыш-Ата",
@@ -55,14 +54,14 @@ export const team = [
     rg: 0,
     o: 0,
     imgSrc: "/images/team/new-logo.png",
-    teamId: "Abdsghjkh-Ata"
+    teamId: "7",
   },
   {
-    teamName: "Дордой", 
+    teamName: "Дордой",
     i: 0,
     rg: 0,
     o: 0,
     imgSrc: "/images/team/dordoi.png",
-    teamId: "Dorghkhgjkdoi"
+    teamId: "8",
   },
 ];

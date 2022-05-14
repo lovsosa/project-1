@@ -25,6 +25,7 @@ export default function LastNews() {
       <h2 className={styles.lastNews__title}>НОВОСТИ</h2>
       <ul className={styles.lastNews__container}>
         {news.map(({ postDescription, postDate, image, id }) => {
+          console.log(image.url);
           return (
             <li key={id} className={styles.lastNews__cart}>
               <img
