@@ -1,6 +1,7 @@
 import axios from "../../api/axios.news";
 import React, { useEffect, useState } from "react";
 import styles from "./LastNews.module.sass";
+import Link from "next/link";
 
 export default function LastNews() {
   const [news, setNews] = useState([]);
@@ -37,9 +38,11 @@ export default function LastNews() {
                 <p>{postDescription}</p>
                 <div className={styles.newsCart__contentDes}>
                   <span className={styles.cartData}>{postDate}</span>
-                  <button className={styles.cart__btn}>
-                    Подробнее <img src="/images/icons/Vector.svg" alt="#" />
-                  </button>
+                  <Link href={`/allNews/${id}`}>
+                    <button className={styles.cart__btn}>
+                      Подробнее <img src="/images/icons/Vector.svg" alt="#" />
+                    </button>
+                  </Link>
                 </div>
               </div>
             </li>

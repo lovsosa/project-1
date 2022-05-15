@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
+import Sponsors from "../components/Sponsors/Sponsors";
 
 export default function Home() {
   // const [mainTitle, setMainTitle] = useState([
@@ -58,13 +59,21 @@ export default function Home() {
             <img src="/images/mainPhoto.jpg" alt="mainImage" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/images/mainPhoto-1.jpg" alt="mainImage" />
+            <img
+              style={{ objectPosition: "0 -200px" }}
+              src="/images/mainPhoto-1.jpg"
+              alt="mainImage"
+            />
           </SwiperSlide>
           <SwiperSlide>
             <img src="/images/mainPhoto-3.jpg" alt="mainImage" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/images/mainPhoto-4.jpg" alt="mainImage" />
+            <img
+              style={{ objectPosition: "0 -200px" }}
+              src="/images/mainPhoto-4.jpg"
+              alt="mainImage"
+            />
           </SwiperSlide>
         </Swiper>
         <div className={styles.mainContent}>
@@ -90,6 +99,8 @@ export default function Home() {
       <TeamTable />
       {/* ! Последние Новости */}
       <LastNews />
+      {/* Спонсоры */}
+      <Sponsors />
     </>
   );
 }
