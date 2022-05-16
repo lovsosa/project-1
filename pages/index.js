@@ -3,37 +3,79 @@ import Head from "next/head";
 import styles from "../styles/Home.module.sass";
 import LastNews from "../components/LastNews/LastNews";
 import TeamTable from "../components/TeamTable/TeamTable.jsx";
+import Sponsors from "../components/Sponsors/Sponsors";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper";
+import cn from "classnames";
 // import "./styles.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
-import Sponsors from "../components/Sponsors/Sponsors";
 
 export default function Home() {
   const [mainTitle, setMainTitle] = useState([
     {
-      content: "fasdf f asdfs afwef dfg asdfge xdfasdf awe",
+      content: "Футбольный союз",
       active: true,
       id: 1,
     },
     {
-      content: "asdfwe fadf awe fsadf asdwae fasf asf wef",
+      content: "Развивающий футбол в Кыргызстане",
       active: false,
       id: 2,
     },
     {
-      content: "asdfawef asef sdfcfgweaqft  FDGHRSEHG ER",
+      content: "Вместе к победе!",
       active: false,
       id: 3,
     },
   ]);
 
-  React.useEffect(() => {
-    let interval = setInterval(() => {}, 1000);
+  const [numIntervalIndex, setNumIntervalIndex] = useState({
+    titleIndex: 0,
+    nextTitleIndex: 1,
+  });
+  useEffect(() => {
+    let forTitle = mainTitle.slice();
+    let numIntervalIndexCopy = Object.assign({}, numIntervalIndex);
+    let { titleIndex, nextTitleIndex } = numIntervalIndexCopy;
+    let interval = setInterval(() => {
+      if (forTitle[titleIndex].active === true) {
+        forTitle[titleIndex].active = false;
+        forTitle[nextTitleIndex].active = true;
+        setMainTitle(forTitle);
+      }
+      if (titleIndex < 2) {
+        titleIndex++;
+      } else {
+        titleIndex = 0;
+      }
+      if (nextTitleIndex < 2) {
+        nextTitleIndex++;
+      } else {
+        nextTitleIndex = 0;
+      }
+      setNumIntervalIndex({
+        titleIndex,
+        nextTitleIndex,
+      });
+    }, 3000);
     return () => clearInterval(interval);
+  }, []);
+  const [mainHeaderShow, setMainHeaderShow] = useState(false);
+  const handleScroll = () => {
+    let scrollY = window.scrollY;
+    if (scrollY > 20) {
+      setMainHeaderShow(true);
+    } else {
+      setMainHeaderShow(false);
+    }
+  };
+  useEffect(() => {
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <>
@@ -47,7 +89,7 @@ export default function Home() {
           effect={"fade"}
           navigation={true}
           autoplay={{
-            delay: 8000,
+            delay: 6000,
             disableOnInteraction: false,
           }}
           pagination={{
@@ -58,21 +100,25 @@ export default function Home() {
           className={styles.main__image}
         >
           <SwiperSlide>
-            <img src="/images/mainPhoto.jpg" alt="mainImage" />
+            <img src="/images/mainPhoto-1.jpg" alt="mainImage" />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              style={{ objectPosition: "0 -200px" }}
-              src="/images/mainPhoto-1.jpg"
+              // style={{ objectPosition: "0 -200px" }}
+              src="/images/mainPhoto-2.jpg"
               alt="mainImage"
             />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/images/mainPhoto-3.jpg" alt="mainImage" />
+            <img
+              style={{ objectPosition: "top" }}
+              src="/images/mainPhoto-3.jpg"
+              alt="mainImage"
+            />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              style={{ objectPosition: "0 -200px" }}
+              style={{ objectPosition: "0 -150px" }}
               src="/images/mainPhoto-4.jpg"
               alt="mainImage"
             />
@@ -80,21 +126,34 @@ export default function Home() {
         </Swiper>
         <div className={styles.mainContent}>
           <div className={styles.main__title}>
-            <h3 className={styles.titleItem}>
-              Lorem ipsum dolor sit amet consectetur adipisicing.
-            </h3>
-            <h3 className={styles.titleItem}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            </h3>
-            <h3 className={styles.titleItem}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum.
-            </h3>
+            {mainTitle.map(({ content, active, id }) => {
+              return (
+                <h3
+                  key={id}
+                  className={cn(styles.titleItem, {
+                    [styles.mainTitleShow]: active,
+                  })}
+                >
+                  {content}
+                </h3>
+              );
+            })}
           </div>
           <p className={styles.main__text}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Accusantium, non perspiciatis atque nesciunt, autem iure unde ullam
-            nihil harum nostrum odio.
+            Кыргызский футбольный союз - это объединение юридических лиц.
+            Деятельность КФС направлена, прежде всего, на развитие и
+            популяризацию всех разновидностей футбола в Кыргызской Республикe.
+            КФС является единственно признанной ФИФА и АФК организацией,
+            обеспечивающей контроль за развитием футбола в Кыргызстане.
           </p>
+        </div>
+        <div
+          className={cn(styles.homeNavigation, {
+            [styles.mainHeaderShow]: mainHeaderShow,
+          })}
+        >
+          <a href="#TournamentTable">Турнирная таблица</a>
+          <a href="#LastNews">Последние новости</a>
         </div>
       </main>
       {/* ! ТАБЛИЦА */}

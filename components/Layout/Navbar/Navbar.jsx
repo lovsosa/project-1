@@ -35,7 +35,7 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  useEffect(() => {}, [logoMarginLeft]);
+  // useEffect(() => {}, [logoMarginLeft]);
   return (
     <>
       <div
@@ -69,7 +69,11 @@ function Navbar() {
             })}
           </nav>
           <div className={styles.logo} id="logo">
-            <img src={logoImg.src} alt="LogoImg" />
+            <Link href={"/"}>
+              <a>
+                <img src={logoImg.src} alt="LogoImg" />
+              </a>
+            </Link>
           </div>
           <nav className={styles.nav} id="second__nav">
             {secondNav.map(({ name, href, doughter }) => {

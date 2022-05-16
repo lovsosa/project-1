@@ -23,10 +23,11 @@ export default function LastNews() {
   }, []);
   return (
     <section className={styles.lastNews}>
-      <h2 className={styles.lastNews__title}>НОВОСТИ</h2>
+      <h2 id="LastNews" className={styles.lastNews__title}>
+        ПОСЛЕДНИЕ НОВОСТИ
+      </h2>
       <ul className={styles.lastNews__container}>
         {news.map(({ postDescription, postDate, image, id }) => {
-          console.log(image.url);
           return (
             <li key={id} className={styles.lastNews__cart}>
               <img
@@ -49,7 +50,9 @@ export default function LastNews() {
           );
         })}
       </ul>
-      <button className={styles.allNews__btn}>Все новости</button>
+      <Link href={"/allNews"}>
+        <button className={styles.allNews__btn}>Все новости</button>
+      </Link>
     </section>
   );
 }

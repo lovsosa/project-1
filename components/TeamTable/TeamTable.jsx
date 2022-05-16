@@ -1,16 +1,12 @@
 import React from "react";
 import { team } from "../../data/team";
 import styles from "./TeamTable.module.sass";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper";
-import "swiper/css/pagination";
-import "swiper/css";
 
 export default function TeamTable() {
   return (
     <div className={styles.slider__container}>
       <section className={styles.tableTeam}>
-        <h2 className={styles.team__title}>
+        <h2 id="TournamentTable" className={styles.team__title}>
           ТУРНИРНАЯ ТАБЛИЦА БК ОЛИМП ПРЕМЬЕР-ЛИГИ:
         </h2>
         <ul className={styles.team__list}>

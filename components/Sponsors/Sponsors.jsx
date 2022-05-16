@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import styles from "./Sponsors.module.sass";
@@ -61,15 +61,13 @@ export default function Sponsors() {
   return (
     <section className={styles.sponsors}>
       <Swiper
-        style={{
-          padding: "0 5px",
-        }}
         className={styles.sponsorsSwiper}
-        slidesPerGroup={4}
-        slidesPerView={4}
+        slidesPerGroup={5}
+        slidesPerView={5}
+        speed={2000}
         autoplay={{
-          delay: 3000,
           disableOnInteraction: false,
+          delay: 3000,
         }}
         modules={[Autoplay]}
         spaceBetween={50}
