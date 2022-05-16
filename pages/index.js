@@ -13,26 +13,28 @@ import "swiper/css/navigation";
 import Sponsors from "../components/Sponsors/Sponsors";
 
 export default function Home() {
-  // const [mainTitle, setMainTitle] = useState([
-  //   {
-  //     content: "fasdf f asdfs afwef dfg asdfge xdfasdf awe",
-  //     active: true,
-  //     id: 1,
-  //   },
-  //   {
-  //     content: "asdfwe fadf awe fsadf asdwae fasf asf wef",
-  //     active: false,
-  //     id: 2,
-  //   },
-  //   {
-  //     content: "asdfawef asef sdfcfgweaqft  FDGHRSEHG ER",
-  //     active: false,
-  //     id: 3,
-  //   },
-  // ]);
+  const [mainTitle, setMainTitle] = useState([
+    {
+      content: "fasdf f asdfs afwef dfg asdfge xdfasdf awe",
+      active: true,
+      id: 1,
+    },
+    {
+      content: "asdfwe fadf awe fsadf asdwae fasf asf wef",
+      active: false,
+      id: 2,
+    },
+    {
+      content: "asdfawef asef sdfcfgweaqft  FDGHRSEHG ER",
+      active: false,
+      id: 3,
+    },
+  ]);
 
-  // React.useEffect(() => {
-  // }, []);
+  React.useEffect(() => {
+    let interval = setInterval(() => {}, 1000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <>
       <Head>

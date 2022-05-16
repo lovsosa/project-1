@@ -2,7 +2,9 @@ import axios from "../../api/axios.news";
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/allNews.module.sass";
 import Head from "next/head";
+import Link from "next/link";
 import Sponsors from "../../components/Sponsors/Sponsors";
+
 const allMonth = [
   {
     monthNameRu: "Январь",
@@ -142,7 +144,9 @@ export default function PostPage({ newsPost }) {
               return (
                 <li key={id}>
                   <span>{postDate + " " + findStringDate.monthNameRu}</span>
-                  <p>{postDescription}</p>
+                  <Link href={`/allNews/${id}`}>
+                    <a>{postDescription}</a>
+                  </Link>
                 </li>
               );
             })}
@@ -151,7 +155,7 @@ export default function PostPage({ newsPost }) {
       </header>
       <style jsx>{`
         .postPage__container {
-          max-width: ${postImage.width + 450 + "px"};
+          max-width: ${800 + 450 + "px"};
           margin: 80px auto;
         }
         .form--for-font {
@@ -161,7 +165,12 @@ export default function PostPage({ newsPost }) {
           justify-content: space-between;
         }
         .description {
-          width: ${postImage.width + "px"};
+          width: 800px;
+        }
+        .description img {
+          width: 100%;
+          max-height: 500px;
+          object-fit: cover;
         }
         .description h2 {
           max-width: 550px;
@@ -188,6 +197,7 @@ export default function PostPage({ newsPost }) {
           justify-content: space-between;
         }
         .news__sidebar {
+          margin-top: 35px;
           width: 400px;
         }
         .news__sidebar li {
@@ -210,7 +220,7 @@ export default function PostPage({ newsPost }) {
           color: #767676;
           align-self: center;
         }
-        .news__sidebar p {
+        .news__sidebar a {
           font-family: "Inter", sans-serif;
           font-size: 14px;
           font-weight: 400;

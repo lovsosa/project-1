@@ -67,6 +67,10 @@ export default function Sponsors() {
         className={styles.sponsorsSwiper}
         slidesPerGroup={4}
         slidesPerView={4}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         modules={[Autoplay]}
         spaceBetween={50}
       >

@@ -45,47 +45,6 @@ export default function TeamTable() {
             );
           })}
         </ul>
-        {/* <Swiper
-          style={{
-            padding: "0 5px",
-          }}
-          className={styles.tableSwiper}
-          pagination={{
-            dynamicBullets: true,
-          }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          slidesPerView={4}
-          modules={[Pagination, Autoplay]}
-          spaceBetween={50}
-        >
-          {team.map(({ teamName, i, rg, o, imgSrc, teamId }) => {
-            return (
-              <SwiperSlide key={teamId} className={styles.tableSlider__item}>
-                <div className={styles.team__head}>
-                  <img src={imgSrc} alt="#" />
-                  <h4>«{teamName}»</h4>
-                </div>
-                <ul className={styles.rating}>
-                  <li>
-                    <span>И</span>
-                    <p>{i}</p>
-                  </li>
-                  <li>
-                    <span>РГ</span>
-                    <p>{rg}</p>
-                  </li>
-                  <li>
-                    <span>О</span>
-                    <p>{o}</p>
-                  </li>
-                </ul>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper> */}
       </section>
     </div>
   );
