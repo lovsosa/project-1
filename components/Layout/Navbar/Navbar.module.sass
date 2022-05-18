@@ -27,7 +27,7 @@
   transform: translateY(-100%)
 .logo
   transform: scale(1)
-  transition: all .3s
+  transition: all .3s ease
 .nav
 .nav__item
   font-size: 14px
@@ -63,6 +63,7 @@
     transition-property: transform, opacity
     transition-duration: 300ms, 0ms
     transition-delay: 0ms, 300ms,
+    transform-style: ease-in
   &:hover::before
     transform: translateY(0)
     opacity: 1

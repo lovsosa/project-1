@@ -68,7 +68,7 @@ const allMonth = [
   },
 ];
 export default function PostPage({ newsPost }) {
-  const [fontSize, setFontSize] = useState("14px");
+  const [fontSize, setFontSize] = useState("");
   const [news, setNews] = useState([]);
   const [dateMainNews, setDateMainNews] = useState();
   const [postImage, setPostImage] = useState({
@@ -76,7 +76,7 @@ export default function PostPage({ newsPost }) {
     height: newsPost.image.height,
   });
   const changeHandler = (e) => {
-    console.log(e.target.value);
+    localStorage.setItem("fontSize", e.target.value);
     setFontSize(e.target.value);
   };
 
@@ -95,18 +95,25 @@ export default function PostPage({ newsPost }) {
       }
     };
     getLastNews();
+    if (postImage.width > 800) {
+      setPostImage({
+        ...postImage,
+        width: 800,
+      });
+    }
+    let postFontSize = localStorage.getItem("fontSize");
+    setFontSize(postFontSize);
     let copyNews = newsPost.postDate.slice();
     copyNews = copyNews.replace(/[^0-9]/g, " ");
     copyNews = copyNews.slice(4);
     const month = copyNews.slice(1, 3);
     copyNews = copyNews.slice(4);
-    console.log(copyNews);
     const findStringDate = allMonth.find((item) => {
       return item.monthId.indexOf(month) > -1;
     });
-    console.log(findStringDate);
     setDateMainNews(`${copyNews + " " + findStringDate.monthNameRu}`);
   }, []);
+
   return (
     <>
       <Head>
@@ -132,7 +139,7 @@ export default function PostPage({ newsPost }) {
               <p>{dateMainNews}</p>
             </div>
           </section>
-          <ul className="news__sidebar">
+          <div className="news__sidebar">
             {news.map(({ id, postDescription, postDate }) => {
               postDate = postDate.replace(/[^0-9]/g, " ");
               postDate = postDate.slice(4);
@@ -141,22 +148,23 @@ export default function PostPage({ newsPost }) {
               const findStringDate = allMonth.find((item) => {
                 return item.monthId.indexOf(month) > -1;
               });
+
               return (
-                <li key={id}>
-                  <span>{postDate + " " + findStringDate.monthNameRu}</span>
-                  <Link href={`/allNews/${id}`}>
-                    <a>{postDescription}</a>
-                  </Link>
-                </li>
+                <Link key={id} href={`/allNews/${id}`}>
+                  <a>
+                    <span>{postDate + " " + findStringDate.monthNameRu}</span>
+                    <p>{postDescription}</p>
+                  </a>
+                </Link>
               );
             })}
-          </ul>
+          </div>
         </main>
       </header>
       <style jsx>{`
         .postPage__container {
-          max-width: ${800 + 450 + "px"};
-          margin: 80px auto;
+          max-width: ${postImage.width + 450 + "px"};
+          margin: 110px auto;
         }
         .form--for-font {
           margin: 35px 0;
@@ -165,11 +173,11 @@ export default function PostPage({ newsPost }) {
           justify-content: space-between;
         }
         .description {
-          width: 800px;
+          width: ${postImage.width + "px"};
         }
         .description img {
           width: 100%;
-          max-height: 500px;
+          max-height: 400px;
           object-fit: cover;
         }
         .description h2 {
@@ -197,20 +205,34 @@ export default function PostPage({ newsPost }) {
           justify-content: space-between;
         }
         .news__sidebar {
-          margin-top: 35px;
           width: 400px;
         }
-        .news__sidebar li {
+        .news__sidebar a {
+          position: relative;
           list-style: none;
           width: 100%;
           height: 100px;
           padding: 20px 10px 10px 10px;
-          background-color: #fff;
           display: flex;
           align-items: flex-start;
           border-bottom: 1px solid #9f9f9f;
+          overflow: hidden;
         }
-        .news__sidebar li span {
+        .news__sidebar a::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          transform: translateX(-100%);
+          transition: 0.5s ease;
+          background-color: #0c4083;
+        }
+        .news__sidebar a:hover::before {
+          transform: translateX(0);
+        }
+        .news__sidebar a span {
           min-width: 50px;
           text-align: center;
           margin-right: 20px;
@@ -220,7 +242,7 @@ export default function PostPage({ newsPost }) {
           color: #767676;
           align-self: center;
         }
-        .news__sidebar a {
+        .news__sidebar p {
           font-family: "Inter", sans-serif;
           font-size: 14px;
           font-weight: 400;

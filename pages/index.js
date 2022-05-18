@@ -160,6 +160,8 @@ export default function Home() {
       <TeamTable />
       {/* ! Последние Новости */}
       <LastNews />
+      {/* Галерея */}
+
       {/* Спонсоры */}
       <Sponsors />
     </>

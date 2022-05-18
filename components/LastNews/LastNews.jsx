@@ -51,7 +51,12 @@ export default function LastNews() {
         })}
       </ul>
       <Link href={"/allNews"}>
-        <button className={styles.allNews__btn}>Все новости</button>
+        <a className={styles.allNews__btn}>
+          <svg>
+            <rect x="0" y="0" fill="none" width="100%" height="100%" />
+          </svg>
+          Все новости
+        </a>
       </Link>
     </section>
   );
