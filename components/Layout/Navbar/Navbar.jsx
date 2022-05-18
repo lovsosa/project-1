@@ -27,7 +27,7 @@ function Navbar() {
     const secondNavWidth = document.getElementById("second__nav").offsetWidth;
     const calcMargin = secondNavWidth - firstNavWidth;
     setlogoMarginLeft(calcMargin);
-    document.getElementById("logo").style.marginLeft = `${calcMargin}px`;
+    // document.getElementById("logo").style.marginLeft = `${calcMargin}px`;
   };
   useEffect(() => {
     handleScroll();

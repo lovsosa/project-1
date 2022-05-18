@@ -7,6 +7,7 @@
   margin: 0 auto
   height: 80px
   transition: all .3s
+  position: relative
 .navbar
   width: 100%
   top: 0
@@ -21,13 +22,16 @@
   .container
     height: 50px
   .logo
-    transform: scale(0)
+    transform: translateX(-50%) scale(0)
 
 .navbarShow
   transform: translateY(-100%)
 .logo
-  transform: scale(1)
+  position: absolute
+  left: 50%
+  transform: translateX(-50%) scale(1)
   transition: all .3s ease
+
 .nav
 .nav__item
   font-size: 14px
