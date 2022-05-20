@@ -7,11 +7,12 @@ import Head from "next/head";
 export default function index() {
   const [postWithImage, setPostWithImage] = useState([]);
   const [usualPost, setUsualPost] = useState([]);
+  const [addNews, setAddNews] = useState(10);
   useEffect(() => {
     const getLastNews = async () => {
       try {
         const res = await axios.get(
-          "/news-id?sort=publishedAt:DESC&populate=image"
+          `/news-id?sort=publishedAt:DESC&pagination[pageSize]=${addNews}&populate=image`
         );
         if (!res.data) {
           throw new Error();
@@ -20,7 +21,14 @@ export default function index() {
         let usualPostCopy = [];
         res.data.data.forEach((item) => {
           let { width, height } = item.image;
-          if (width > 1200) {
+          if (width > 1920) {
+            // if (height > width) {
+            //   let itemWithHeight = { ...item, className: "tallImage" };
+            //   postWithImageCopy.push(itemWithHeight);
+            // } else {
+            //   let itemWithWidth = { ...item, className: "wideImage" };
+            //   postWithImageCopy.push(itemWithWidth);
+            // }
             postWithImageCopy.push(item);
           } else {
             usualPostCopy.push(item);
@@ -31,7 +39,7 @@ export default function index() {
       } catch (error) {}
     };
     getLastNews();
-  }, []);
+  }, [addNews]);
   return (
     <>
       <Head>
@@ -55,21 +63,53 @@ export default function index() {
             })}
           </ul>
           <ul className={styles.postWithImage__list}>
-            {postWithImage.map(({ postDescription, postDate, image, id }) => {
-              return (
-                <Link key={id} href={`/allNews/${id}`}>
-                  <li className={styles.postWithImage__item}>
-                    <img src={image.url} alt={image.name} />
-                    <div className={styles.postWithImage__content}>
-                      <p>{postDescription}</p>
-                      <span className={styles.cartData}>{postDate}</span>
-                    </div>
-                  </li>
-                </Link>
-              );
-            })}
+            {postWithImage.map(
+              ({ postDescription, postDate, image, id, className }) => {
+                // let randomNum = Math.floor(Math.random() * (100 - 50) + 50);
+                // if (className === "tallImage") {
+                //   console.log(randomNum);
+                // }
+                return (
+                  <Link key={id} href={`/allNews/${id}`}>
+                    <li className={styles.postWithImage__item} id={className}>
+                      <img src={image.url} alt={image.name} />
+                      <div className={styles.postWithImage__content}>
+                        <p>{postDescription}</p>
+                        <span className={styles.cartData}>{postDate}</span>
+                      </div>
+                      {/* <style jsx>{`
+                        #tallImage {
+                          max-height: ${250 + randomNum + "px"};
+                          width: 100%;
+                          overflow: hidden;
+                        }
+                        #tallImage img {
+                          height: 100%;
+                          width: 100%;
+                          object-fit: cover;
+                        }
+                        #wideImage {
+                          width: 100%;
+                          max-height: ${200 + randomNum + "px"};
+                        }
+                        #wideImage img {
+                          max-width: 100%;
+                          height: 100%;
+                        }
+                      `}</style> */}
+                    </li>
+                  </Link>
+                );
+              }
+            )}
           </ul>
         </main>
+        <button
+          className={styles.addMoreNews__btn}
+          onClick={() => setAddNews(addNews + 2)}
+        >
+          Добавить еще
+        </button>
       </header>
     </>
   );

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&display=swap')
 
 .main__header
   position: relative
@@ -16,7 +18,7 @@
   position: relative
   &::after
     content: ""
-    background-color: rgba(24, 62, 122, 0.4)
+    background-color: rgba(24, 62, 122, 0.5)
     position: absolute
     top: 0
     left: 0
@@ -24,29 +26,37 @@
     height: 100%
     z-index: 2
 .mainContent
-  margin: 0 0 0 50px
   position: absolute
+  // height: 400px
+  top: 50%
+  left: 0
+  z-index: 3
+  margin: 0 0 0 50px
+  padding: 15px 0 15px 15px
   display: flex
   flex-direction: column
   align-items: flex-start
   justify-content: center
-  top: 0
-  left: 0
-  height: 100%
-  z-index: 3
   color: #fff
+  transform: translateY(-50%)
+  // Мало поддержки
+  // backdrop-filter: blur(50px)
+  // background: rgba(255, 255, 255, 0.03)
+  // border: 1px solid
+  // border-image: linear-gradient(99.29deg, rgba(255, 255, 255, 0.3) 0.03%, rgba(255, 255, 255, 0) 87.62%) 1% stretch
   .main__title
     position: relative
-    overflow: hidden
-    max-height: 90px
-    width: 750px
-    margin: 0 0 25px 0
     display: flex
     align-items: center
+    margin: 0 0 25px 0
+    width: 750px
+    max-height: 90px
+    overflow: hidden
     .titleItem
-      font-weight: bold
+      font-family: 'Oswald', sans-serif
+      font-weight: 500
       width: 100%
-      font-size: 36px
+      font-size: 2.25rem
       opacity: 0
       &:nth-child(2),
       &:nth-child(3)
@@ -56,85 +66,31 @@
         width: 100%
         transform: translateY(-100%)
   .main__text
-    margin: 0 0 0 0
-    font-size: 16px
-    line-height: 23px
+    font-family: 'Barlow', sans-serif
     font-weight: 500
+    font-size: 18px
+    line-height: 23px
+    margin: 0 0 0 0
     max-width: 728px
-    text-shadow: 1px 1px 2px #000
-
+    text-shadow: 0px 0px 2px #ffffff31
 .mainTitleShow
   animation: slide 3s 1
 @keyframes slide
   0%
     transform: translateY(-100%)
     opacity: 0
-  20%
+  5%
     transform: translateY(0)
     opacity: 1
-  30%
+  85%
     transform: translateY(0)
     opacity: 1
-  75%
-    transform: translateY(0)
-    opacity: 1
-  90%
+  95%
     transform: translateY(100%)
     opacity: 0
   99%
     transform: translateY(-100%)
     opacity: 0
-
-// .mainTitleShow-2
-//   animation: slide 2s infinite
-//   animation-delay: 1s
-
-// .mainTitleShow-3
-//   animation: slide 2s infinite
-//   animation-delay: 1s
-
-// @keyframes firstTitle
-//   0%
-//     transform: translateY(0)
-//     opacity: 1
-//   30%
-//     transform: translateY(100%)
-//     opacity: 0
-//   60%
-//     transform: translateY(-100%)
-//     opacity: 0
-//   90%
-//     transform: translateY(0)
-//     opacity: 1
-// @keyframes secondTitle
-//   0%
-//     transform: translateY(-100%)
-//     opacity: 0
-//   30%
-//     transform: translateY(0)
-//     opacity: 1
-//   60%
-//     transform: translateY(100%)
-//     opacity: 0
-//   100%
-//     transform: translateY(-100%)
-//     opacity: 0
-// @keyframes thirdTitle
-//   0%
-//     transform: translateY(-100%)
-//     opacity: 0
-//   30%
-//     transform: translateY(-100%)
-//     opacity: 0
-//   60%
-//     transform: translateY(0)
-//     opacity: 1
-//   90%
-//     transform: translateY(100%)
-//     opacity: 0
-//   100%
-//     transform: translateY(-100%)
-//     opacity: 0
 .swiper
   width: 100%
   height: 100%
@@ -177,3 +133,16 @@
       color: #fff
 .mainHeaderShow
   opacity: 0
+.aboutLink__btn
+  margin: 25px 0 0
+  padding: 15px 35px
+  background-color: #0c4083
+  border-radius: 0
+  border: none
+  cursor: pointer
+  text-align: center
+  font-family: 'Inter', sans-serif
+  font-style: normal
+  color: #FFFFFF
+  font-weight: 700
+  font-size: 16px

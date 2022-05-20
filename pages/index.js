@@ -4,9 +4,11 @@ import styles from "../styles/Home.module.sass";
 import LastNews from "../components/LastNews/LastNews";
 import TeamTable from "../components/TeamTable/TeamTable.jsx";
 import Sponsors from "../components/Sponsors/Sponsors";
+import Gallery from "../components/Gallery/Gallery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper";
 import cn from "classnames";
+import Link from "next/link";
 // import "./styles.css";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -118,7 +120,7 @@ export default function Home() {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              style={{ objectPosition: "0 -150px" }}
+              style={{ objectPosition: "top" }}
               src="/images/mainPhoto-4.jpg"
               alt="mainImage"
             />
@@ -146,6 +148,9 @@ export default function Home() {
             КФС является единственно признанной ФИФА и АФК организацией,
             обеспечивающей контроль за развитием футбола в Кыргызстане.
           </p>
+          <Link href={"/about"}>
+            <a className={styles.aboutLink__btn}>Подробнее</a>
+          </Link>
         </div>
         <div
           className={cn(styles.homeNavigation, {
@@ -161,7 +166,7 @@ export default function Home() {
       {/* ! Последние Новости */}
       <LastNews />
       {/* Галерея */}
-
+      <Gallery />
       {/* Спонсоры */}
       <Sponsors />
     </>
