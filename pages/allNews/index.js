@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/allNews.module.sass";
 import Link from "next/link";
 import Head from "next/head";
+import Masonry from "react-masonry-css";
 
-export default function index() {
+export default function allNews() {
   const [postWithImage, setPostWithImage] = useState([]);
   const [usualPost, setUsualPost] = useState([]);
   const [addNews, setAddNews] = useState(10);
@@ -20,15 +21,8 @@ export default function index() {
         let postWithImageCopy = [];
         let usualPostCopy = [];
         res.data.data.forEach((item) => {
-          let { width, height } = item.image;
+          let { width } = item.image;
           if (width > 1920) {
-            // if (height > width) {
-            //   let itemWithHeight = { ...item, className: "tallImage" };
-            //   postWithImageCopy.push(itemWithHeight);
-            // } else {
-            //   let itemWithWidth = { ...item, className: "wideImage" };
-            //   postWithImageCopy.push(itemWithWidth);
-            // }
             postWithImageCopy.push(item);
           } else {
             usualPostCopy.push(item);
@@ -62,51 +56,28 @@ export default function index() {
               );
             })}
           </ul>
-          <ul className={styles.postWithImage__list}>
-            {postWithImage.map(
-              ({ postDescription, postDate, image, id, className }) => {
-                // let randomNum = Math.floor(Math.random() * (100 - 50) + 50);
-                // if (className === "tallImage") {
-                //   console.log(randomNum);
-                // }
-                return (
-                  <Link key={id} href={`/allNews/${id}`}>
-                    <li className={styles.postWithImage__item} id={className}>
-                      <img src={image.url} alt={image.name} />
-                      <div className={styles.postWithImage__content}>
-                        <p>{postDescription}</p>
-                        <span className={styles.cartData}>{postDate}</span>
-                      </div>
-                      {/* <style jsx>{`
-                        #tallImage {
-                          max-height: ${250 + randomNum + "px"};
-                          width: 100%;
-                          overflow: hidden;
-                        }
-                        #tallImage img {
-                          height: 100%;
-                          width: 100%;
-                          object-fit: cover;
-                        }
-                        #wideImage {
-                          width: 100%;
-                          max-height: ${200 + randomNum + "px"};
-                        }
-                        #wideImage img {
-                          max-width: 100%;
-                          height: 100%;
-                        }
-                      `}</style> */}
-                    </li>
-                  </Link>
-                );
-              }
-            )}
-          </ul>
+          <Masonry
+            breakpointCols={2}
+            className={styles.postWithImage__list}
+            columnClassName={styles.myMasonryGrid_column}
+          >
+            {postWithImage.map(({ postDescription, image, id, className }) => {
+              return (
+                <Link key={id} href={`/allNews/${id}`}>
+                  <li className={styles.postWithImage__item} id={className}>
+                    <img src={image.url} alt={image.name} />
+                    <div className={styles.postWithImage__content}>
+                      <p>{postDescription}</p>
+                    </div>
+                  </li>
+                </Link>
+              );
+            })}
+          </Masonry>
         </main>
         <button
           className={styles.addMoreNews__btn}
-          onClick={() => setAddNews(addNews + 2)}
+          onClick={() => setAddNews(addNews + 5)}
         >
           Добавить еще
         </button>

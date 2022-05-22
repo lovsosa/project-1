@@ -1,14 +1,86 @@
-import React from "react";
-import { team } from "../../data/team";
+import axios from "../../api/axios.news";
+import React, { useEffect, useState } from "react";
 import styles from "./TeamTable.module.sass";
 
 export default function TeamTable() {
+  const [teamHere, setTeamHere] = useState([]);
+  useEffect(() => {
+    const getTeamTables = async () => {
+      try {
+        const res = await axios.get("/team-tables?populate=TeamIcon");
+        if (!res.data) {
+          throw new Error();
+        }
+
+        setTeamHere([...res.data.data]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getTeamTables();
+  }, []);
   return (
     <div className={styles.slider__container}>
-      <section className={styles.tableTeam}>
-        <h2 id="TournamentTable" className={styles.team__title}>
-          ТУРНИРНАЯ ТАБЛИЦА БК ОЛИМП ПРЕМЬЕР-ЛИГИ:
-        </h2>
+      <h2 id="TournamentTable" className={styles.team__title}>
+        ТУРНИРНАЯ ТАБЛИЦА БК ОЛИМП ПРЕМЬЕР-ЛИГИ:
+      </h2>
+      <section className={styles.bestTeam}>
+        <ul className={styles.lastMatches}>
+          <li className={styles.lastMatches__item}>
+            <h5 className={styles.versusDate}>8 июня</h5>
+            <div className={styles.teamVersus}>
+              <div className={styles.first__team}>
+                <div className={styles.vsTeamIcon__container}>
+                  <img src="/images/team/Kyrgyztan.jpg" alt="" />
+                </div>
+                <span>Кыргызстан</span>
+              </div>
+              <span className={styles.versus}>VS</span>
+              <div className={styles.second__team}>
+                <div className={styles.vsTeamIcon__container}>
+                  <img src="/images/team/singapur.png" alt="" />
+                </div>
+                <span>Сингапур</span>
+              </div>
+            </div>
+          </li>
+          <li className={styles.lastMatches__item}>
+            <h5 className={styles.versusDate}>11 июня</h5>
+            <div className={styles.teamVersus}>
+              <div className={styles.first__team}>
+                <div className={styles.vsTeamIcon__container}>
+                  <img src="/images/team/Kyrgyztan.jpg" alt="" />
+                </div>
+                <span>Кыргызстан</span>
+              </div>
+              <span className={styles.versus}>VS</span>
+              <div className={styles.second__team}>
+                <div className={styles.vsTeamIcon__container}>
+                  <img src="/images/team/Flag_of_Myanmar.svg" alt="" />
+                </div>
+                <span>Мьянма</span>
+              </div>
+            </div>
+          </li>
+          <li className={styles.lastMatches__item}>
+            <h5 className={styles.versusDate}>11 июня</h5>
+            <div className={styles.teamVersus}>
+              <div className={styles.first__team}>
+                <div className={styles.vsTeamIcon__container}>
+                  <img src="/images/team/Kyrgyztan.jpg" alt="" />
+                </div>
+                <span>Кыргызстан</span>
+              </div>
+              <span className={styles.versus}>VS</span>
+              <div className={styles.second__team}>
+                <div className={styles.vsTeamIcon__container}>
+                  <img src="/images/team/lgbt.svg.png" alt="" />
+                </div>
+                <span>Таджикистан</span>
+              </div>
+            </div>
+          </li>
+        </ul>
         <ul className={styles.team__list}>
           <li className={styles.team__cart}>
             <span className={styles.teamNumber}>№</span>
@@ -16,30 +88,28 @@ export default function TeamTable() {
             <span>И</span>
             <span>РГ</span>
             <span>О</span>
-            <span>Выйгрыши</span>
-            <span>Проигрыши</span>
           </li>
-          {team.map(({ teamName, i, rg, o, imgSrc, teamId }) => {
-            return (
-              <li className={styles.team__cart} key={teamId}>
-                <span className={styles.teamNumber}>{teamId}</span>
-                <span
-                  className={styles.team__head}
-                  style={{ justifyContent: "flex-start" }}
-                >
-                  <div>
-                    <img src={imgSrc} alt={teamName} />
-                  </div>
-                  <p>«{teamName}»</p>
-                </span>
-                <span>{i}</span>
-                <span>{rg}</span>
-                <span>{o}</span>
-                <span>0</span>
-                <span>0</span>
-              </li>
-            );
-          })}
+          {teamHere.map(
+            ({ TeamName, Games, RG, Points, TeamIcon, id }, index) => {
+              return (
+                <li className={styles.team__cart} key={id}>
+                  <span className={styles.teamNumber}>{index + 1}</span>
+                  <span
+                    className={styles.team__head}
+                    style={{ justifyContent: "flex-start" }}
+                  >
+                    <div>
+                      <img src={TeamIcon.url} alt={TeamIcon.name} />
+                    </div>
+                    <p>«{TeamName}»</p>
+                  </span>
+                  <span>{Games}</span>
+                  <span>{RG}</span>
+                  <span>{Points}</span>
+                </li>
+              );
+            }
+          )}
         </ul>
       </section>
     </div>

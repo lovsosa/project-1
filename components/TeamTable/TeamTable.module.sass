@@ -1,30 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap')
 .slider__container
-  width: calc( 100% - 600px )
-  margin: 40px auto
-.tableTeam
-  width: 100%
-  display: flex
-  flex-direction: column
-  align-items: center
+  width: calc( 100% - 100px )
+  margin: 60px auto
+  text-align: center
 .team__title
   font-family: 'Oswald', sans-serif
-  font-size: 1.625rem
+  font-size: 2rem
   font-weight: 500
-.team__list
-  margin-top: 40px
+.bestTeam
+  padding: 50px 0 0
   width: 100%
+  display: flex
+  justify-content: space-between
+.team__list
+  width: 40%
   box-shadow: 0px 1px 3px -1px #0000007c
   font-weight: 600
 .team__cart
   width: 100%
   display: grid
-  grid-template-columns: 50px 2fr 1fr 1fr 1fr 1fr 1fr
+  grid-template-columns: 50px 2fr 1fr 1fr 1fr
   column-gap: 5px
   &:nth-child(odd)
+    background-color: rgba(12, 64, 131, .8)
     span
       color: #fff
-      background-color: rgba(12, 64, 131, .8)
   &:first-child
     background-color: #191919
     color: #fff
@@ -38,7 +38,6 @@
     border-right: none
     width: 100%
     height: 50px
-
 .team__head
   div
     width: 45px
@@ -48,3 +47,47 @@
     margin: 0 15px 0 10px
     img
       max-height: 35px
+.lastMatches
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  width: 60%
+  font-weight: 600
+  li
+    list-style: none
+.lastMatches__item
+  width: 80%
+.versusDate
+  font-weight: 700
+  font-size: 22px
+.teamVersus
+  position: relative
+  width: 100%
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 25px 10px
+.first__team
+  width: 250px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+.second__team
+  width: 250px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+.vsTeamIcon__container
+  max-width: 80px
+  display: flex
+  align-items: center
+  margin: 0 0 20px
+  img
+    width: 100%
+.versus
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translateX(-50%) translateY(-50%)

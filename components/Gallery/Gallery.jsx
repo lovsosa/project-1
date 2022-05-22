@@ -5,55 +5,32 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Gallery() {
-  const [gallery, setGallery] = useState();
-  useEffect(() => {
-    const getLastNews = async () => {
-      try {
-        const res = await axios.get(
-          "/galleries?sort=publishedAt:DESC&pagination[pageSize]=1&populate=galleryImages"
-        );
-        if (!res.data) {
-          throw new Error();
-        }
-        // let mainDate = format(
-        //   new Date(!res.data.data[0].publishedAt),
-        //   "MMM dd"
-        // );
-        setGallery({
-          ...res.data.data[0],
-          // mainDate,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getLastNews();
-  }, []);
-
   return (
     <section className={styles.gallery__container}>
       <div className={styles.gallery}>
-        <a className={styles.gallery__item}>
-          <img
-            style={{ objectPosition: "top" }}
-            src="/images/mainPhoto-1.jpg"
-            alt=""
-          />
-        </a>
-        <a className={styles.gallery__item}>
-          <img
-            style={{ objectPosition: "top" }}
-            src="/images/mainPhoto-2.jpg"
-            alt=""
-          />
-        </a>
-        <a className={styles.gallery__item}>
-          <img
-            style={{ objectPosition: "top" }}
-            src="/images/mainPhoto-3.jpg"
-            alt=""
-          />
-        </a>
+        <Link href="/gallery">
+          <a className={styles.gallery__item}>
+            <img
+              style={{ objectPosition: "0 -50px" }}
+              src="/images/mainPhoto-1.jpg"
+              alt=""
+            />
+          </a>
+        </Link>
+        <Link href="/gallery">
+          <a className={styles.gallery__item}>
+            <img
+              style={{ objectPosition: "top" }}
+              src="/images/mainPhoto-2.jpg"
+              alt=""
+            />
+          </a>
+        </Link>
+        <Link href="/gallery">
+          <a className={styles.gallery__item}>
+            <img src="/images/mainPhoto-3.jpg" alt="" />
+          </a>
+        </Link>
         <Link href="/gallery">
           <a className={styles.gallery__item}>
             <img
@@ -63,11 +40,23 @@ export default function Gallery() {
             />
           </a>
         </Link>
-        <Link href="/gallery">
-          <a className={styles.goGalleries__btn}>Перейти в галерею</a>
+      </div>
+      <div className={styles.youTube__item}>
+        <div className={styles.youTubeItem__image}>
+          <Link href="https://www.youtube.com/channel/UC68xk5obCPDD035X2f9kVtA">
+            <img
+              src="/images/KyrgyzFootball__Logo.jpg"
+              alt="KyrgyzFootball__Logo"
+            />
+          </Link>
+        </div>
+        <h4>Kyrgyz Football Union</h4>
+        <span>8,31 тыс. подписчиков</span>
+        <h3 className={styles.youTube__des}>Подпишитесь на наш ютуб канал!</h3>
+        <Link href="https://www.youtube.com/channel/UC68xk5obCPDD035X2f9kVtA">
+          <button>ПОДПИСАТЬСЯ</button>
         </Link>
       </div>
-      <div className={styles.videoGallery}></div>
     </section>
   );
 }
