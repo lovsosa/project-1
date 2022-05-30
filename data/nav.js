@@ -5,15 +5,15 @@ export const nav = [
     doughter: [
       {
         name: "О СОЮЗЕ",
-        href: "/kfu/AboutTheUnion",
+        href: "/kfu/about",
       },
       {
         name: "ВИДЕНИЕ И МИССИЯ СОЮЗА",
-        href: "/kfu/VisualAndMissionOfTheUnion",
+        href: "/kfu/futureAndGoals",
       },
       {
         name: "ИСПОЛНИТЕЛЬНЫЙ КОМИТЕТ",
-        href: "/kfu/ExecutiveCommitee",
+        href: "/kfu/executiveCommit",
       },
       {
         name: "СЕКРЕТАРИАТ КФС",
@@ -25,7 +25,7 @@ export const nav = [
       },
       {
         name: "РЕГИОНЫ",
-        href: "/kfu/Regions",
+        href: "/kfu/regions",
       },
       {
         name: "ТРЕНЕРСКОЕ ОБРАЗОВАНИЕ",

@@ -148,7 +148,7 @@ export default function Home() {
             КФС является единственно признанной ФИФА и АФК организацией,
             обеспечивающей контроль за развитием футбола в Кыргызстане.
           </p>
-          <Link href={"/about"}>
+          <Link href={"/kfu/about"}>
             <a className={styles.aboutLink__btn}>Подробнее</a>
           </Link>
         </div>
