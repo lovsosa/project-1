@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { Component } from "react";
-import styles from "../../../styles//futureAndGoals.module.sass";
+import styles from "../../../styles/kfu/futureAndGoals.module.sass";
 
 export default class futureAndGoals extends Component {
   render() {

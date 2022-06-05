@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import styles from "../../../styles/about.module.sass";
+import styles from "../../../styles/kfu/about.module.sass";
 
 export default function about() {
   return (

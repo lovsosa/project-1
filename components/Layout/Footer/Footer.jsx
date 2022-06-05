@@ -1,59 +1,173 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { nav, secondNav } from "../../../data/nav";
 import styles from "./Footer.module.sass";
 
 export default function Footer() {
+  const [footerLink, setFooterLink] = useState([...nav, ...secondNav]);
+  const openMenu = (name) => {
+    let footerLinkCopy = footerLink.slice();
+    let element = footerLinkCopy.findIndex((item) => {
+      return item.name.indexOf(name) > -1;
+    });
+    footerLinkCopy.forEach((item, index) => {
+      if (item.doughter) {
+        if (index !== element) {
+          footerLinkCopy[index].active = false;
+        }
+      }
+    });
+    footerLinkCopy[element].active = !footerLinkCopy[element].active;
+    setFooterLink([...footerLinkCopy]);
+  };
+  const openSubMenu = (mainName, name) => {
+    let footerLinkCopy = footerLink.slice();
+    let elementIndex = footerLinkCopy.findIndex((item) => {
+      return item.name.indexOf(mainName) > -1;
+    });
+    let subElementIndex = footerLinkCopy[elementIndex].doughter.findIndex(
+      (item) => {
+        return item.name.indexOf(name) > -1;
+      }
+    );
+    footerLinkCopy[elementIndex].doughter.forEach((item, index) => {
+      if (item.doughter) {
+        if (index !== subElementIndex) {
+          item.active = false;
+        }
+      }
+    });
+    footerLinkCopy[elementIndex].doughter[subElementIndex].active =
+      !footerLinkCopy[elementIndex].doughter[subElementIndex].active;
+    setFooterLink([...footerLinkCopy]);
+  };
   return (
     <section className={styles.footer}>
       <div className={styles.footerContainer}>
         <div className={styles.footer__listContainer}>
-          <div>
-            {nav.map(({ name, href, doughter }) => {
+          {footerLink.map(({ name, href, doughter, active, id }) => {
+            let mainName = name;
+            if (doughter) {
               return (
-                <ul key={href} className={styles.footerLink__list}>
-                  <li key={href} className={styles.footerList__link}>
-                    <Link href={href}>
-                      <a>{name}</a>
-                    </Link>
+                <ul key={href} className={styles.footerList}>
+                  <li
+                    onClick={() => openMenu(name)}
+                    className={styles.mainFooter__link}
+                  >
+                    {name}
+                    {active ? (
+                      <svg
+                        className={styles.arrowSvg}
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 15l7-7 7 7"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        className={styles.arrowSvg}
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    )}
                   </li>
-                  {doughter.map(({ href, name }) => {
-                    return (
-                      <li key={href} className={styles.footerList__link}>
-                        <Link href={href}>
-                          <a>{name}</a>
-                        </Link>
-                      </li>
-                    );
-                  })}
+                  {active
+                    ? doughter.map(({ href, name, active, doughter, id }) => {
+                        if (doughter) {
+                          return (
+                            <ul
+                              key={href}
+                              onClick={() => openSubMenu(mainName, name)}
+                            >
+                              <li className={styles.subFooter__link}>
+                                {name}
+                                {active ? (
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className={styles.arrowSvg}
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M5 15l7-7 7 7"
+                                    />
+                                  </svg>
+                                ) : (
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className={styles.arrowSvg}
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M19 9l-7 7-7-7"
+                                    />
+                                  </svg>
+                                )}
+                              </li>
+                              {active
+                                ? doughter.map(({ name, href, id }) => {
+                                    return (
+                                      <li
+                                        key={href}
+                                        className={styles.subSubFooter__link}
+                                      >
+                                        <Link href={href}>
+                                          <a>{name}</a>
+                                        </Link>
+                                      </li>
+                                    );
+                                  })
+                                : null}
+                            </ul>
+                          );
+                        } else {
+                          return (
+                            <li key={href} className={styles.subFooter__link}>
+                              <Link href={href}>
+                                <a>{name}</a>
+                              </Link>
+                            </li>
+                          );
+                        }
+                      })
+                    : null}
                 </ul>
               );
-            })}
-          </div>
-          <div>
-            {secondNav.map(({ name, href, doughter }) => {
-              if (href !== "/Vacancies") {
-                return (
-                  <ul key={href} className={styles.footerLink__list}>
-                    <li key={href} className={styles.footerList__link}>
-                      <Link href={href}>
-                        <a>{name}</a>
-                      </Link>
-                    </li>
-                    {doughter.map(({ href, name }) => {
-                      return (
-                        <li key={href} className={styles.footerList__link}>
-                          <Link href={href}>
-                            <a>{name}</a>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                );
-              }
-            })}
-          </div>
+            } else {
+              return (
+                <li key={href} className={styles.mainFooter__link}>
+                  <Link href={href}>
+                    <a>{name}</a>
+                  </Link>
+                </li>
+              );
+            }
+          })}
         </div>
         <div className={styles.about}>
           <div className={styles.about__link}>
@@ -77,10 +191,10 @@ export default function Footer() {
               </a>
             </div>
             <div>
-              E-mail: 
+              E-mail:
               <a href="google.com"> press@kfu.kg</a>
             </div>
-            <div> 
+            <div>
               E-mail:
               <a href="google.com"> commercial@kfu.kg</a>
             </div>

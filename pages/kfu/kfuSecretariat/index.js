@@ -1,7 +1,7 @@
 import axios from "../../../api/axios.news";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import styles from "../../../styles/kfuSecretariat.module.sass";
+import styles from "../../../styles/kfu/kfuSecretariat.module.sass";
 
 export default function kfuSecretariat() {
   const [secretariat, setSecretariat] = useState([]);

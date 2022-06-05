@@ -1,7 +1,7 @@
 import axios from "../../../api/axios.news";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import styles from "../../../styles/partners.module.sass";
+import styles from "../../../styles/kfu/partners.module.sass";
 import Sponsors from "../../../components/Sponsors/Sponsors";
 export default function partners() {
   const [partners, setPartners] = useState([]);

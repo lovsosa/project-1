@@ -1,7 +1,7 @@
 import axios from "../../../api/axios.news";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import styles from "../../../styles/regions.module.sass";
+import styles from "../../../styles/kfu/regions.module.sass";
 export default function regions() {
   const [regions, setRegions] = useState([]);
   useEffect(() => {
