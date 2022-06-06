@@ -4,7 +4,10 @@ import { nav, secondNav } from "../../../data/nav";
 import styles from "./Footer.module.sass";
 
 export default function Footer() {
-  const [footerLink, setFooterLink] = useState([...nav, ...secondNav]);
+  const [footerLink, setFooterLink] = useState([
+    ...nav.slice(),
+    ...secondNav.slice(),
+  ]);
   const openMenu = (name) => {
     let footerLinkCopy = footerLink.slice();
     let element = footerLinkCopy.findIndex((item) => {

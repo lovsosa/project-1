@@ -32,18 +32,19 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [navLink, setNavLink] = useState([...nav, ...secondNav]);
+  const [navLink, setNavLink] = useState([
+    ...nav.slice(),
+    ...secondNav.slice(),
+  ]);
   const [navLinkActive, setNavLinkActive] = useState(false);
 
   const closeMenu = () => {
     let navLinkCopy = navLink.slice();
     let element = navLinkCopy.findIndex((item) => {
       if (item.doughter) {
-        console.log(item.active);
         return item.active === true;
       }
     });
-    console.log(element);
     if (element >= 0) {
       navLinkCopy[element].active = !navLinkCopy[element].active;
     } else if (element === -1) {
@@ -208,7 +209,11 @@ function Navbar() {
               </a>
             </Link>
           </div>
-          <main className={styles.navigation}>
+          <main
+            className={cn(styles.navigation, {
+              [styles.navigationVisible]: isOpen,
+            })}
+          >
             <nav className={styles.nav}>
               {navLink.map(({ name, href, active, doughter }, index) => {
                 if (index >= 0 && index < 4) {

@@ -1,9 +1,9 @@
 import axios from "../../api/axios.news";
 import Head from "next/head";
 import React from "react";
-import styles from "../../styles/futsal/futsalPage.module.sass";
+import styles from "../../styles/projects/projectsPage.module.sass";
 
-export default function footzalPage(pageData) {
+export default function leaguesPage(pageData) {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,7 +22,7 @@ export default function footzalPage(pageData) {
   );
 }
 export async function getStaticPaths() {
-  const res = await axios.get(`/futzals`);
+  const res = await axios.get(`/dlya-bolelshhikovs`);
   const paths = res.data.data.map((res) => {
     return {
       params: { id: String(res.id) },
@@ -34,7 +34,7 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params: { id } }) {
-  const res = await axios.get(`/futzals/${id}?populate=image`);
+  const res = await axios.get(`/dlya-bolelshhikovs/${id}?populate=image`);
   const pageData = res.data.data;
 
   return {
