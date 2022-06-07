@@ -5,6 +5,7 @@ import Link from "next/link";
 import { nav, secondNav } from "../../../data/nav.js";
 import cn from "classnames";
 import { Divide, Divide as Hamburger } from "hamburger-react";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const [navbarFixed, setNavbarFixed] = useState(false);
@@ -12,6 +13,16 @@ function Navbar() {
   const [isOpen, setOpen] = useState(false);
   const handleScroll = () => {
     let scrollY = window.scrollY;
+    let doc = document;
+    let height = Math.max(
+      doc.body.scrollHeight,
+      doc.documentElement.scrollHeight,
+      doc.body.offsetHeight,
+      doc.documentElement.offsetHeight,
+      doc.body.clientHeight,
+      doc.documentElement.clientHeight
+    );
+    console.log(height);
     if (scrollY >= 20) {
       setNavbarFixed(true);
       setOpen(false);
@@ -19,7 +30,7 @@ function Navbar() {
     } else {
       setNavbarFixed(false);
     }
-    if (scrollY > 1250) {
+    if (scrollY > height / 2) {
       setNavbarShow(true);
       closeMenu();
     } else {
@@ -145,7 +156,13 @@ function Navbar() {
           onClick={() => openMenu(name)}
         >
           {name}
-          <svg
+          <motion.svg
+            animate={{
+              transition: {
+                delay: 1,
+                duration: 1,
+              },
+            }}
             xmlns="http://www.w3.org/2000/svg"
             className={cn(styles.arrowSvg)}
             fill="none"
@@ -158,7 +175,7 @@ function Navbar() {
               strokeLinejoin="round"
               d="M19 9l-7 7-7-7"
             />
-          </svg>
+          </motion.svg>
         </li>
         {active ? (
           <ul

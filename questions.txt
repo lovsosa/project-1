@@ -1,5 +1,7 @@
 scrollY 50%
-hover arrow
+hover arrow https://reactcommunity.org/react-transition-group/transition
+show nav list
 sposors
 toggle btn
 commit
+collection types

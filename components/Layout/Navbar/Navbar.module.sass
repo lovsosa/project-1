@@ -3,8 +3,7 @@
 .container
   max-width: calc( 100% - 100px )
   margin: 0 auto
-  min-height: 80px
-  max-height: 80px
+  height: 80px
   transition: all .3s
   position: relative
   display: flex
@@ -26,12 +25,11 @@
   border-bottom: 1px solid #DFDFEF
   box-shadow: 1px 0 0px 1px #DFDFEF
   .container
-    min-height: 60px
-    max-height: 60px
+    height: 60px
   .navigation
-    min-height: 60px
+    height: 60px
   .nav
-    min-height: 60px
+    height: 60px
   .logo
     transform: translateX(-50%) scale(0)
 .navbarShow
@@ -39,7 +37,7 @@
 
 .navigation
   width: 100%
-  min-height: 80px
+  height: 80px
   display: flex
   align-items: center
   justify-content: space-between
@@ -69,15 +67,17 @@
     margin-top: 0px
     visibility: visible
 
-.main__link.mainlinkActive
-  transition: 1s
-  .arrowSvg
-    transform: rotate(180deg)
 .arrowSvg
   max-width: 15px
   margin-left: 5px
   transform: rotate(0deg)
+  transition: all 1s !important
+
+.main__link.mainlinkActive
   transition: 1s
+  .arrowSvg
+    transform: rotate(180deg)
+    background: red
 
 .subNavList__link,
 .navList__link,

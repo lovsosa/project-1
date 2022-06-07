@@ -74,7 +74,7 @@ export default function TeamTable() {
               <span className={styles.versus}>VS</span>
               <div className={styles.second__team}>
                 <div className={styles.vsTeamIcon__container}>
-                  <img src="/images/team/lgbt.svg.png" alt="" />
+                  {/* <img src="/images/team/lgbt.svg.png" alt="" /> */}
                 </div>
                 <span>Таджикистан</span>
               </div>
