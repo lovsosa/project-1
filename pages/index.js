@@ -88,42 +88,30 @@ export default function Home() {
       </Head>
       <main className={styles.main__header}>
         <Swiper
-          effect={"fade"}
-          navigation={true}
-          autoplay={{
-            delay: 6000,
-            disableOnInteraction: false,
-          }}
+          modules={[EffectFade, Navigation, Pagination, Autoplay]}
           pagination={{
             type: "progressbar",
             progressbarFillClass: styles.swiperPaginationProgressbarFill,
           }}
-          modules={[EffectFade, Navigation, Pagination, Autoplay]}
+          navigation
+          effect={"fade"}
+          autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+          }}
           className={styles.main__image}
         >
           <SwiperSlide>
             <img src="/images/mainPhoto-1.jpg" alt="mainImage" />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              // style={{ objectPosition: "0 -200px" }}
-              src="/images/mainPhoto-2.jpg"
-              alt="mainImage"
-            />
+            <img src="/images/mainPhoto-2.jpg" alt="mainImage" />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              style={{ objectPosition: "top" }}
-              src="/images/mainPhoto-3.jpg"
-              alt="mainImage"
-            />
+            <img src="/images/mainPhoto-3.jpg" alt="mainImage" />
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              style={{ objectPosition: "top" }}
-              src="/images/mainPhoto-4.jpg"
-              alt="mainImage"
-            />
+            <img src="/images/mainPhoto-4.jpg" alt="mainImage" />
           </SwiperSlide>
         </Swiper>
         <div className={styles.mainContent}>

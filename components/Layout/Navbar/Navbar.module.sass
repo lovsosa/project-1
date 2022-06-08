@@ -8,6 +8,7 @@
   position: relative
   display: flex
   align-items: center
+
 .navbar
   width: 100%
   top: 0
@@ -53,31 +54,26 @@
   position: relative
   height: 100%
 .subNav__list
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
   position: absolute
   background-color: #fff
-  display: flex
-  flex-direction: column
-  width: 250px
-.subNav__list
-  visibility: hidden
-  margin-top: 40px
-  transition: 1s
-  &.subNavLinkActive
-    transition: 1s
-    margin-top: 0px
-    visibility: visible
+  min-width: 600px
+  border-top: 4px solid
+  border-image: linear-gradient(90deg, rgba(12,64,131,1) 0%, rgba(0,159,255,1) 100%) 1% stretch
+  z-index: 100
 
 .arrowSvg
   max-width: 15px
+  position: relative
+  top: 0
+  left: 0
   margin-left: 5px
-  transform: rotate(0deg)
-  transition: all 1s !important
+  transition: .3s
 
 .main__link.mainlinkActive
-  transition: 1s
   .arrowSvg
     transform: rotate(180deg)
-    background: red
 
 .subNavList__link,
 .navList__link,
@@ -88,6 +84,8 @@
   line-height: 15px
   display: flex
   align-items: center
+  font-size: 0.875rem
+  font-weight: 400
 
 .main__link
   height: 100%
@@ -96,24 +94,82 @@
   padding: 0 20px
   display: flex
   align-items: center
-.navList__link
-  font-size: 0.875rem
-  font-weight: 400
-  padding: 12px 39px 12px 25px
-  border-top: 1px solid #e1e1e1
+  z-index: 100
+.navList__link.relative
+  padding: 18px 39px 18px 25px
   &:first-child
     border-top: none
+  &:nth-child(2)
+    border-top: none
+  &:nth-child(even)
+    border-right: none
+  &:hover
+    background-color: #ffffff00
+    padding: 18px 39px 18px 25px
+    color: #000
+    font-weight: 400
+
+.navList__link
+  position: relative
+  padding: 18px 39px 18px 25px
+  border-top: 1px solid #e1e1e1
+  border-right: 1px solid #e1e1e1
+  transition: .3s
+  .navList__arrow
+    max-width: 20px
+    position: absolute
+    transform: translateY(-50%) translateX(-100%)
+    top: 50%
+    left: 20px
+    opacity: 0
+    transition: .3s
+  &:first-child
+    border-top: none
+  &:nth-child(2)
+    border-top: none
+  &:nth-child(even)
+    border-right: none
+  &:hover
+    background-color: rgba(12, 64, 131, 1)
+    padding: 18px 20px 18px 44px
+    color: #fff
+    font-weight: 500
+    .navList__arrow
+      left: 20px
+      opacity: 1
+      transform: translateY(-50%) translateX(0)
 
 .subNavList__link
-  font-size: 0.875rem
-  font-weight: 400
+  position: relative
+  padding: 18px 30px 18px 34px
+  border-top: 1px solid #e1e1e1
+  border-right: 1px solid #e1e1e1
+  transition: .3s
+  .subNavList__arrow
+    max-width: 20px
+    position: absolute
+    transform: translateY(-50%) translateX(-100%)
+    top: 50%
+    left: 20px
+    opacity: 0
+    transition: .3s
+  &:nth-child(even)
+    border-right: none
+  &:hover
+    background-color: rgba(12, 64, 131, 1)
+    padding: 18px 20px 18px 44px
+    color: #fff
+    font-weight: 500
+    .subNavList__arrow
+      left: 20px
+      opacity: 1
+      transform: translateY(-50%) translateX(0)
 
 // .arrowSvg.arrowActive
 
 .hamburger
   display: none
 @media screen and (max-width: 1400px)
-  .navbar
   .container
     position: relative
     justify-content: flex-end
@@ -130,7 +186,7 @@
     align-items: flex-start
     justify-content: flex-start
     background-color: #fff
-    border-top: 3px solid rgba(12, 64, 131, 1)
+    border-top: 4px solid rgba(12, 64, 131, 1)
     transition: .3s
     transform: translateX(calc( 100% + 50px)) translateY(80px)
     &.navigationVisible
@@ -172,3 +228,21 @@
     left: 0
     transform: translateX(0) scale(1)
     transition: all .3s ease
+  .navbar.navbarFixed
+    .navigation
+      height: 100vh
+      transition: .3s
+      transform: translateX(calc( 100% + 50px)) translateY(60px)
+      border-top: 2px solid #DFDFEF
+      &.navigationVisible
+        transform: translateX(50px) translateY(60px)
+        transition: .2s
+    .nav
+      height: auto
+.backDrop
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -1

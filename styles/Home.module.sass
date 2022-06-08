@@ -13,9 +13,12 @@
   height: 100%
 .main__image img
   object-fit: cover
-  object-position: 0 -80px
+  &:nth-last-child(-n+2)
+    object-position: top
+
 .main__image
   position: relative
+
   &::after
     content: ""
     background-color: rgba(24, 62, 122, 0.5)
@@ -31,7 +34,7 @@
   top: 50%
   left: 0
   z-index: 3
-  margin: 0 0 0 50px
+  margin: 0 50px 0 50px
   padding: 15px 0 15px 15px
   display: flex
   flex-direction: column
@@ -49,7 +52,7 @@
     display: flex
     align-items: center
     margin: 0 0 25px 0
-    width: 750px
+    width: 100%
     max-height: 90px
     overflow: hidden
     .titleItem
@@ -146,3 +149,45 @@
   color: #FFFFFF
   font-weight: 700
   font-size: 16px
+@media screen and (max-width: 1006px)
+  .mainContent
+
+    .main__title
+      .titleItem
+        font-size: 2rem
+    .main__text
+      font-size: 1rem
+      max-width: 628px
+    .aboutLink__btn
+      margin: 15px 0 0
+      font-size: 14px
+@media screen and (max-width: 808px)
+  .mainContent
+    .main__title
+      .titleItem
+        font-size: 1.625rem
+    .main__text
+      max-width: 450px
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
+      word-wrap: break-word
+    .aboutLink__btn
+      font-size: 14px
+@media screen and (max-width: 596px)
+  .mainContent
+    margin: 0 30px 0 30px
+    .main__title
+      .titleItem
+        font-size: 1.5rem
+    .main__text
+      -webkit-line-clamp: 4
+    .aboutLink__btn
+      margin: 15px 0 0
+      font-size: 14px
+  .swiper-button-prev
+    display: none
+  .swiper-button-next
+    display: none
