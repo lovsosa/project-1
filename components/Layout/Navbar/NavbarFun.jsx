@@ -38,6 +38,7 @@ const variantsChild = {
 
 export default function NavbarFun({
   name,
+  id,
   active,
   doughter,
   nav,
@@ -45,29 +46,31 @@ export default function NavbarFun({
   closeList,
 }) {
   const [navLinkActive, setNavLinkActive] = useState(false);
-  const mainName = name;
+  const mainId = id;
 
   const openMenu = () => {
-    let navCopy = nav.slice();
+    let navCopy = [...nav];
     const element = navCopy.findIndex((item) => {
-      if (item.name === mainName) {
-        return item;
+      if (item.id) {
+        if (item.id === mainId) {
+          return item;
+        }
       }
     });
     navCopy.forEach((item) => {
-      if (item.name !== mainName) {
+      if (item.id !== mainId) {
         item.active = false;
       }
-      if (item.active === false) {
+      if (item.id === false) {
         item.doughter.forEach((item) => {
           item.active = false;
         });
       }
     });
-    if (navCopy[element].active === false) {
+    if (element in navCopy && navCopy[element].active === false) {
       navCopy[element].active = true;
       setNavLinkActive(true);
-    } else if (navCopy[element].active === true) {
+    } else if (element in navCopy && navCopy[element].active === true) {
       navCopy[element].active = false;
       setNavLinkActive(false);
     }
@@ -75,14 +78,14 @@ export default function NavbarFun({
   };
 
   const openSubMenu = (index, name) => {
-    let navCopy = nav.slice();
+    let navCopy = [...nav];
     const element = navCopy.findIndex((item) => {
-      if (item.name === mainName) {
+      if (item.id === mainId) {
         return item;
       }
     });
     navCopy[element].doughter.forEach((item) => {
-      if (item.doughter) {
+      if (item.id) {
         if (item.name !== name) {
           item.active = false;
         }
@@ -97,31 +100,6 @@ export default function NavbarFun({
     }
     setNav(navCopy);
   };
-  const handleScroll = (scrollY) => {
-    console.log(scrollY);
-    // let scrollY = window.scrollY;
-    // if (scrollY >= 20) {
-    //   closeList();
-    // }
-  };
-  useEffect(() => {
-    handleScroll();
-    let scrollY = window.scrollY;
-    window.addEventListener("scroll", handleScroll(scrollY));
-  }, []);
-  // const closeMenu = () => {
-  //   let navLinkCopy = navLink.slice();
-  //   let element = navLinkCopy.findIndex((item) => {
-  //     if (item.doughter) {
-  //       return item.active === true;
-  //     }
-  //   });
-  //   if (element >= 0) {
-  //     navLinkCopy[element].active = !navLinkCopy[element].active;
-  //   } else if (element === -1) {
-  //     return;
-  //   }
-  // };
 
   const SubLinkWithDoughter = ({ name, subActive, doughter, index }) => {
     const variantsChild = {
@@ -193,7 +171,9 @@ export default function NavbarFun({
                     d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
                   />
                 </svg>
-                <Link href={href}>{name}</Link>
+                <Link href={href}>
+                  <a onClick={closeList}>{name}</a>
+                </Link>
               </motion.li>
             );
           })}
@@ -277,7 +257,9 @@ export default function NavbarFun({
                           d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"
                         />
                       </svg>
-                      <Link href={href}>{name}</Link>
+                      <Link href={href}>
+                        <a onClick={closeList}>{name}</a>
+                      </Link>
                     </motion.li>
                   );
                 }

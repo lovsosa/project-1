@@ -3,6 +3,7 @@ export const nav = [
     name: "КФС",
     href: "/kfu",
     active: false,
+    id: 1,
     doughter: [
       {
         name: "О СОЮЗЕ",
@@ -54,6 +55,7 @@ export const nav = [
     name: "СБОРНЫЕ",
     href: "/team",
     active: false,
+    id: 2,
     doughter: [
       {
         name: "ФУТБОЛ",

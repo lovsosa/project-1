@@ -14,6 +14,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
+import "swiper/css/bundle";
 
 export default function Home() {
   const [mainTitle, setMainTitle] = useState([
@@ -93,7 +94,21 @@ export default function Home() {
             type: "progressbar",
             progressbarFillClass: styles.swiperPaginationProgressbarFill,
           }}
-          navigation
+          // navigation={{
+          //   enabled: true,
+          // }}
+          breakpoints={{
+            320: {
+              navigation: {
+                enabled: false,
+              },
+            },
+            500: {
+              navigation: {
+                enabled: false,
+              },
+            },
+          }}
           effect={"fade"}
           autoplay={{
             delay: 6000,

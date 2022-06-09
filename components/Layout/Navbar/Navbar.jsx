@@ -4,18 +4,15 @@ import logoImg from "./LogoImg.png";
 import Link from "next/link";
 import { nav, secondNav } from "../../../data/nav.js";
 import cn from "classnames";
-import { Divide, Divide as Hamburger } from "hamburger-react";
+import { Spin as Hamburger } from "hamburger-react";
 import NavbarFun from "./NavbarFun";
 
 function Navbar() {
   const [navbarFixed, setNavbarFixed] = useState(false);
   const [navbarShow, setNavbarShow] = useState(false);
   const [isOpen, setOpen] = useState(false);
-  const [navLink, setNavLink] = useState([
-    ...nav.slice(),
-    ...secondNav.slice(),
-  ]);
-  const [filterNav, setFilterNav] = useState([]);
+  const [navLink, setNavLink] = useState([...nav, ...secondNav]);
+  // const [filterNav, setFilterNav] = useState([]);
 
   const handleScroll = () => {
     let scrollY = window.scrollY;
@@ -28,9 +25,10 @@ function Navbar() {
       doc.body.clientHeight,
       doc.documentElement.clientHeight
     );
-    if (!filterNav) {
-      closeList();
-    }
+    closeList();
+    // if (!filterNav) {
+    //   closeList();
+    // }
     if (scrollY >= 20) {
       setNavbarFixed(true);
       setOpen(false);
@@ -43,33 +41,33 @@ function Navbar() {
       setNavbarShow(false);
     }
   };
+  // useEffect(() => {
+  //   const filNavFun = navLink.filter((item) => {
+  //     if (item.doughter && item.doughter.length) {
+  //       return item;
+  //     }
+  //   });
+  //   setFilterNav(filNavFun);
+  // }, []);
   useEffect(() => {
-    const filNavFun = navLink.filter((item) => {
-      if (item.doughter) {
-        return item;
-      }
-    });
-    setFilterNav(filNavFun);
-    handleScroll();
+    // handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const closeList = () => {
-    console.log(filterNav);
-    if (filterNav) {
-      let navCopy = filterNav.slice();
-      navCopy.forEach((item) => {
+    // let navStr = JSON.stringify(filterNav);
+    // let navCopy = JSON.parse(navStr);
+    let navCopy = [...navLink];
+    navCopy.forEach((item) => {
+      if (item.id) {
         item.active = false;
-        if (item.active === false) {
-          item.doughter.forEach((item) => {
-            item.active = false;
-          });
-        }
-      });
-      console.log(navCopy);
-      setFilterNav(navCopy);
-    }
+        item.doughter.forEach((item) => {
+          item.active = false;
+        });
+      }
+    });
+    setNavLink(navCopy);
   };
   return (
     <>
@@ -94,18 +92,19 @@ function Navbar() {
             })}
           >
             <nav className={styles.nav}>
-              {navLink.map(({ name, href, active, doughter }, index) => {
+              {navLink.map(({ name, href, active, doughter, id }, index) => {
                 if (index >= 0 && index < 4) {
                   if (doughter) {
                     return (
                       <NavbarFun
                         key={href}
+                        id={id}
                         name={name}
                         href={href}
                         active={active}
                         doughter={doughter}
-                        nav={filterNav}
-                        setNav={setFilterNav}
+                        nav={navLink}
+                        setNav={setNavLink}
                         closeList={() => closeList()}
                       />
                     );
@@ -136,8 +135,8 @@ function Navbar() {
                         href={href}
                         active={active}
                         doughter={doughter}
-                        nav={filterNav}
-                        setNav={setFilterNav}
+                        nav={navLink}
+                        setNav={setNavLink}
                         closeList={() => closeList()}
                       />
                     );
@@ -164,7 +163,8 @@ function Navbar() {
               [styles.hamburgerVisible]: isOpen,
             })}
           >
-            <Divide
+            <Hamburger
+              color="rgba(12,64,131,1)"
               toggled={isOpen}
               toggle={setOpen}
               onToggle={(setOpen) => !setOpen}
