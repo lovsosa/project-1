@@ -1,10 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900)
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap')
 .lastNews
+  width: calc( 100% - 100px )
   display: flex
   flex-direction: column
   align-items: center
-  margin: 0 0 60px
+  margin: 0 auto 60px
 .lastNews__title
   font-family: 'Oswald', sans-serif
   margin: 0 0 40px
@@ -13,19 +14,26 @@
 
 .lastNews__container
   width: 100%
-  display: flex
-  justify-content: space-around
-  flex-wrap: wrap
+  // display: flex
+  // justify-content: space-around
+  // flex-wrap: wrap
+  display: grid
+  grid-template-columns: repeat(auto-fit , minmax(400px,1fr))
+  gap: 3%
+  justify-content: center
   margin: 0 0 60px
 .lastNews__cart
   position: relative
   height: 400px
-  width: 30%
+  width: 100%
+  margin: 0 auto
   min-width: 350px
   border-radius: 0px
   display: flex
   align-items: flex-end
   justify-content: center
+  &:last-child
+    display: none
   &:hover
     .newsCart__content
       transform: translateY(0px)
@@ -155,4 +163,70 @@ $mainColor: #0c4083
       stroke-dasharray: 15, 310
       stroke-dashoffset: 48
       transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1)
-@media screen and (max-width: 1400px)
+@media screen and (max-width: 1376px)
+  .lastNews__container
+  .lastNews__cart
+    width: 80%
+    margin: 0 0 0 auto
+    &:nth-child(1)
+      margin-bottom: 10px
+    &:last-child
+      display: flex
+      margin-bottom: 10px
+    &:nth-child(2n)
+      margin: 0 auto 0 0
+@media screen and (max-width: 1200px)
+  .lastNews__container
+    gap: 0
+  .lastNews__cart
+    width: 90%
+    margin: 0 auto
+    &:nth-child(1)
+      margin-bottom: 30px
+    &:last-child
+      display: flex
+      margin-bottom: 30px
+    &:nth-child(2n)
+      margin: 0 auto
+@media screen and (max-width: 1000px)
+  .lastNews__container
+    display: block
+    gap: 3%
+  .lastNews__cart
+    width: 100%
+    max-width: 550px
+    margin-bottom: 35px
+    &:nth-child(2n)
+      margin: 0 auto 35px
+    // &:nth-child(1)
+    //   margin-bottom: 0px
+@media screen and (max-width: 470px)
+  .lastNews__container
+    min-width: 280px
+    grid-template-columns: 1fr
+  .lastNews__cart
+    min-width: 100%
+    height: 320px
+  .newsCart__content
+    p
+      font-size: 0.875rem
+  .cartData
+    font-size: 0.75rem
+    font-weight: 400
+  .cart__btn
+    padding: 10px 20px
+    gap: 5px
+    font-weight: 700
+    font-size: 0.75rem
+    line-height: 17px
+    cursor: pointer
+  .newsCart__content
+    height: 150px
+    padding: 15px 16px
+
+// @media screen and (max-width: 1314px)
+//   .lastNews__title
+//     font-size: 28px
+@media screen and (max-width: 426px)
+  .lastNews__title
+    font-size: 1.5rem

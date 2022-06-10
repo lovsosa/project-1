@@ -1,83 +1,74 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import styles from "./Sponsors.module.sass";
+import axios from "../../api/axios.news";
+import Link from "next/link";
 
-const sponsors = [
-  {
-    name: "fifa",
-    id: "1",
-  },
-  {
-    name: "afc",
-    id: "2",
-  },
-  {
-    name: "kgBank",
-    id: "3",
-  },
-  {
-    name: "joma",
-    id: "4",
-  },
-  {
-    name: "shoro",
-    id: "5",
-  },
-  {
-    name: "unicef",
-    id: "6",
-  },
-  {
-    name: "frunze",
-    id: "7",
-  },
-  {
-    name: "europaPlus",
-    id: "8",
-  },
-  {
-    name: "kgSport",
-    id: "9",
-  },
-  {
-    name: "nitro",
-    id: "10",
-  },
-  {
-    name: "sheraton",
-    id: "11",
-  },
-  {
-    name: "biTaxi",
-    id: "12",
-  },
-  {
-    name: "megaCom",
-    id: "13",
-  },
-];
 export default function Sponsors() {
+  const [partners, setPartners] = useState([]);
+  useEffect(() => {
+    const getPartners = async () => {
+      try {
+        const res = await axios.get(`/partneries?populate=image`);
+        if (!res.data) {
+          throw new Error();
+        }
+        setPartners(res.data.data);
+      } catch (error) {}
+    };
+    getPartners();
+  }, []);
   return (
     <section className={styles.sponsors}>
       <Swiper
         className={styles.sponsorsSwiper}
-        slidesPerGroup={5}
-        slidesPerView={5}
         speed={2000}
         autoplay={{
           disableOnInteraction: false,
           delay: 3000,
         }}
+        breakpoints={{
+          320: {
+            slidesPerGroup: 2,
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          650: {
+            slidesPerGroup: 3,
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          850: {
+            slidesPerGroup: 4,
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1250: {
+            slidesPerGroup: 5,
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }}
         modules={[Autoplay]}
         spaceBetween={50}
       >
-        {sponsors.map(({ name, id }) => {
-          return (
-            <SwiperSlide key={name} className={styles.sponsorsSlider__item}>
-              <img src={`/images/sponsors/sponsor-` + id + `.png`} alt={name} />
-            </SwiperSlide>
-          );
+        {partners.map(({ name, image, url, id }) => {
+          if (url) {
+            return (
+              <SwiperSlide key={id} className={styles.sponsorsSlider__item}>
+                <a href={url}>
+                  <img src={image.url} alt={name} />
+                </a>
+              </SwiperSlide>
+            );
+          } else {
+            return (
+              <SwiperSlide key={id} className={styles.sponsorsSlider__item}>
+                <img src={image.url} alt={name} />
+              </SwiperSlide>
+            );
+          }
         })}
       </Swiper>
     </section>

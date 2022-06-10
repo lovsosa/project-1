@@ -3,14 +3,33 @@ import React, { useEffect, useState } from "react";
 import styles from "./LastNews.module.sass";
 import Link from "next/link";
 import { format } from "date-fns";
+import { motion, AnimatePresence } from "framer-motion";
 
+let secondTeamVar = {
+  hidden: {
+    x: 20,
+    opacity: 0,
+  },
+  visible: (num) => ({
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: num * 0.1,
+    },
+  }),
+  // margin: {
+  //   once: true,
+  //   amount: 1,
+  // },
+};
 export default function LastNews() {
   const [news, setNews] = useState([]);
   useEffect(() => {
     const getLastNews = async () => {
       try {
         const res = await axios.get(
-          "/news-id?sort=publishedAt:DESC&pagination[pageSize]=3&populate=image"
+          "/news-id?sort=publishedAt:DESC&pagination[pageSize]=4&populate=image"
         );
         if (!res.data) {
           throw new Error();
@@ -35,9 +54,20 @@ export default function LastNews() {
         ПОСЛЕДНИЕ НОВОСТИ
       </h2>
       <ul className={styles.lastNews__container}>
-        {news.map(({ postDescription, mainDate, image, id }) => {
+        {news.map(({ postDescription, mainDate, image, id }, index) => {
           return (
-            <li key={id} className={styles.lastNews__cart}>
+            <motion.li
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 1,
+              }}
+              variants={secondTeamVar}
+              custom={index}
+              key={id}
+              className={styles.lastNews__cart}
+            >
               <img
                 className={styles.header__img}
                 src={image.url}
@@ -54,7 +84,7 @@ export default function LastNews() {
                   </Link>
                 </div>
               </div>
-            </li>
+            </motion.li>
           );
         })}
       </ul>

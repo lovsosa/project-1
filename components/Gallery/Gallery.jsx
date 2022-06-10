@@ -3,42 +3,85 @@ import styles from "./Gallery.module.sass";
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
+let galleryItem = {
+  hidden: {
+    scale: 0.5,
+    opacity: 0,
+  },
+  visible: (num) => ({
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: num * 0.1,
+    },
+  }),
+};
 export default function Gallery() {
   return (
     <section className={styles.gallery__container}>
       <div className={styles.gallery}>
         <Link href="/gallery">
-          <a className={styles.gallery__item}>
-            <img
-              style={{ objectPosition: "0 -50px" }}
-              src="/images/mainPhoto-1.jpg"
-              alt=""
-            />
-          </a>
+          <motion.a
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 1,
+            }}
+            variants={galleryItem}
+            className={styles.gallery__item}
+          >
+            <img src="/images/mainPhoto-1.jpg" alt="Kyrgyz" />
+          </motion.a>
         </Link>
         <Link href="/gallery">
-          <a className={styles.gallery__item}>
-            <img
-              style={{ objectPosition: "top" }}
-              src="/images/mainPhoto-2.jpg"
-              alt=""
-            />
-          </a>
+          <motion.a
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 1,
+            }}
+            variants={galleryItem}
+            className={styles.gallery__item}
+          >
+            <img src="/images/mainPhoto-2.jpg" alt="Kyrgyz" />
+          </motion.a>
         </Link>
         <Link href="/gallery">
-          <a className={styles.gallery__item}>
+          <motion.a
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 1,
+            }}
+            variants={galleryItem}
+            className={styles.gallery__item}
+          >
             <img src="/images/mainPhoto-3.jpg" alt="" />
-          </a>
+          </motion.a>
         </Link>
         <Link href="/gallery">
-          <a className={styles.gallery__item}>
+          <motion.a
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 1,
+            }}
+            variants={galleryItem}
+            className={styles.gallery__item}
+          >
             <img
               style={{ objectPosition: "top" }}
               src="/images/mainPhoto-4.jpg"
-              alt=""
+              alt="Kyrgyz"
             />
-          </a>
+          </motion.a>
         </Link>
       </div>
       <div className={styles.youTube__item}>

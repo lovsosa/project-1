@@ -5,16 +5,10 @@ import LastNews from "../components/LastNews/LastNews";
 import TeamTable from "../components/TeamTable/TeamTable.jsx";
 import Sponsors from "../components/Sponsors/Sponsors";
 import Gallery from "../components/Gallery/Gallery";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Navigation, Pagination } from "swiper";
 import cn from "classnames";
 import Link from "next/link";
+import MainSlider from "../components/mainSlider/mainSlider";
 // import "./styles.css";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
-import "swiper/css/bundle";
 
 export default function Home() {
   const [mainTitle, setMainTitle] = useState([
@@ -88,53 +82,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main__header}>
-        <Swiper
-          modules={[EffectFade, Navigation, Pagination, Autoplay]}
-          pagination={{
-            type: "progressbar",
-            progressbarFillClass: styles.swiperPaginationProgressbarFill,
-          }}
-          // navigation={{
-          //   enabled: true,
-          // }}
-          breakpoints={{
-            320: {
-              navigation: {
-                enabled: false,
-              },
-            },
-            500: {
-              navigation: {
-                enabled: false,
-              },
-            },
-          }}
-          effect={"fade"}
-          autoplay={{
-            delay: 6000,
-            disableOnInteraction: false,
-          }}
-          className={styles.main__image}
-        >
-          <SwiperSlide>
-            <img src="/images/mainPhoto-1.jpg" alt="mainImage" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/images/mainPhoto-2.jpg" alt="mainImage" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/images/mainPhoto-3.jpg" alt="mainImage" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="/images/mainPhoto-4.jpg" alt="mainImage" />
-          </SwiperSlide>
-        </Swiper>
+        <MainSlider />
         <div className={styles.mainContent}>
           <div className={styles.main__title}>
             {mainTitle.map(({ content, active, id }) => {
               return (
                 <h3
                   key={id}
+                  id="Home"
                   className={cn(styles.titleItem, {
                     [styles.mainTitleShow]: active,
                   })}
