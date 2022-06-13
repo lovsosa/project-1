@@ -189,17 +189,17 @@ export default function Footer() {
           </div>
           <div className={styles.contact}>
             <div>
-              <a href="google.com">
+              <span href="google.com">
                 Тел: <span> +996 312 51 82 84</span>
-              </a>
+              </span>
             </div>
             <div>
               E-mail:
-              <a href="google.com"> press@kfu.kg</a>
+              <span href="google.com"> press@kfu.kg</span>
             </div>
             <div>
               E-mail:
-              <a href="google.com"> commercial@kfu.kg</a>
+              <span href="google.com"> commercial@kfu.kg</span>
             </div>
           </div>
         </div>

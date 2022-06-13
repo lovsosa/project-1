@@ -13,7 +13,7 @@
   margin: 0 0 15px
 .contentList
   display: grid
-  grid-template-columns: repeat(3, 1fr)
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
   gap: 25px
 .contentList__item
   list-style: none
@@ -29,3 +29,15 @@
   font-family: 'Roboto', sans-serif
   font-size: 16px
   font-weight: 500
+@media screen and (max-width: 600px)
+  .container
+    width: calc( 100% - 50px )
+  .contentList
+    grid-template-columns: 1fr
+  .contentList__title
+    font-size: 1.125rem
+  .contentList__item
+    span
+      font-size: 0.875rem
+  .boldText
+    font-size: 0.875rem

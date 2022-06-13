@@ -34,12 +34,12 @@ export default function Sponsors() {
             slidesPerView: 2,
             spaceBetween: 20,
           },
-          650: {
+          750: {
             slidesPerGroup: 3,
             slidesPerView: 3,
             spaceBetween: 30,
           },
-          850: {
+          950: {
             slidesPerGroup: 4,
             slidesPerView: 4,
             spaceBetween: 40,

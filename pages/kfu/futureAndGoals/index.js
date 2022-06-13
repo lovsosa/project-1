@@ -18,7 +18,7 @@ export default class futureAndGoals extends Component {
             вперед!»
           </h3>
           <div className={styles.main__content}>
-            <div>
+            <div className={styles.mainContent__list}>
               <span className={styles.dflex}>
                 <b>Видение:</b>
                 <ol className={styles.content__list}>

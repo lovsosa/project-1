@@ -51,11 +51,58 @@
     object-fit: cover
 .sidebar__title
   font-family: 'Roboto', sans-serif
-  font-size: 16px
+  font-size: 14px
   font-weight: 500
   margin: 5px 0
 .sidebarRank
   font-family: 'Roboto', sans-serif
-  font-size: 14px
+  font-size: 12px
   font-weight: 300
-  margin: 5px 0
+
+@media screen and (max-width: 1100px)
+  .content
+    width: 100%
+    flex-direction: column
+    align-items: flex-start
+  .mainContent
+    width: 70%
+  .sidebar
+    margin-top: 35px
+    width: 100%
+    padding: 0 45px
+  .sidebarRank
+    font-size: 12px
+@media screen and (max-width: 800px)
+  .container
+    width: calc( 100% - 50px )
+  .mainContent
+    width: 100%
+  .sidebar
+    padding: 0 0
+
+@media screen and (max-width: 578px)
+  .sidebar
+    grid-template-columns: 1fr
+    padding: 0 30px
+  .content__list
+    margin-top: 15px
+    li
+      margin-top: 10px
+      line-height: 28px
+      font-size: 0.875rem
+  .content__text
+    line-height: 28px
+    font-size: 0.875rem
+  .main__title
+    font-size: 1.75rem
+@media screen and (max-width: 420px)
+  .sidebar
+    padding: 0 0
+  .content__list
+    li
+      line-height: 24px
+      font-size: 0.75rem
+  .content__text
+    line-height: 1.75rem
+  .main__title
+    font-size: 1.5rem
