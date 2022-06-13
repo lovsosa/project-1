@@ -8,6 +8,7 @@ import Gallery from "../components/Gallery/Gallery";
 import cn from "classnames";
 import Link from "next/link";
 import MainSlider from "../components/mainSlider/mainSlider";
+import Loader from "../components/Loader/Loader";
 // import "./styles.css";
 
 export default function Home() {
@@ -74,6 +75,9 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  // if (true) {
+  // return <Loader />;
+  // } else {
   return (
     <>
       <Head>
@@ -129,4 +133,5 @@ export default function Home() {
       <Sponsors />
     </>
   );
+  // }
 }
