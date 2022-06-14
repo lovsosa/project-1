@@ -95,7 +95,7 @@ export default function football() {
                 checked={checkedRadio}
                 value={"first"}
               />
-              <label htmlFor="team__1">Тренерский штаб</label>
+              <label className={styles.hover} htmlFor="team__1">Тренерский штаб</label>
             </span>
             <span className={styles.teamCheckbox__span}>
               <input
@@ -105,7 +105,7 @@ export default function football() {
                 id="team__2"
                 value={"second"}
               />
-              <label htmlFor="team__2">Состав команды</label>
+              <label className={styles.hover} htmlFor="team__2">Состав команды</label>
             </span>
           </form>
           <ul className={styles.players__list}>
@@ -115,7 +115,7 @@ export default function football() {
                     <li key={id} className={styles.playersList__item}>
                       <div className={styles.personImage}>
                         {image ? (
-                          <img src={image.url} alt={image.name} />
+                          <img className={styles.image} src={image.url} alt={image.name} />
                         ) : (
                           <img
                             src="/images/team/mainNoname.png"
@@ -128,11 +128,12 @@ export default function football() {
                   );
                 })
               : secondData.map(({ name, image, id }) => {
+                console.log(image)
                   return (
                     <li key={id} className={styles.playersList__item}>
                       <div className={styles.personImage}>
                         {image ? (
-                          <img src={image.url} alt={image.name} />
+                          <img className={styles.image} src={image.url} alt={image.name} />
                         ) : (
                           <img
                             src="/images/team/noname.png"

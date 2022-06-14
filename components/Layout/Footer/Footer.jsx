@@ -201,6 +201,9 @@ export default function Footer() {
               E-mail:
               <span href="google.com"> commercial@kfu.kg</span>
             </div>
+            <div className={styles.flex}>
+              <a href="https://www.instagram.com/calipso.kg/" target='blank'>Made on Calipso</a>
+            </div>
           </div>
         </div>
       </div>
