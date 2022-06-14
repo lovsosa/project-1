@@ -80,7 +80,14 @@ export default function mainTeam() {
                 return (
                   <li key={id} className={styles.playersList__item}>
                     <div className={styles.personImage}>
-                      <img src={image.url} alt={image.name} />
+                      {image ? (
+                        <img src={image.url} alt={image.name} />
+                      ) : (
+                        <img
+                          src="/images/team/mainNoname.png"
+                          alt="footballUser"
+                        />
+                      )}
                     </div>
                     <span className={styles.playersItem__text}>{name}</span>
                   </li>
@@ -90,7 +97,11 @@ export default function mainTeam() {
                 return (
                   <li key={id} className={styles.playersList__item}>
                     <div className={styles.personImage}>
-                      <img src={image.url} alt={image.name} />
+                      {image ? (
+                        <img src={image.url} alt={image.name} />
+                      ) : (
+                        <img src="/images/team/noname.png" alt="footballUser" />
+                      )}
                     </div>
                     <span className={styles.playersItem__text}>{name}</span>
                   </li>

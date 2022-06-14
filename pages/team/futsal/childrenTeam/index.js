@@ -64,7 +64,9 @@ export default function childrenTeam() {
               checked={checkedRadio}
               value={"first"}
             />
-            <label style={{cursor: 'pointer'}} htmlFor="team__1">Тренерский штаб</label>
+            <label style={{ cursor: "pointer" }} htmlFor="team__1">
+              Тренерский штаб
+            </label>
           </span>
           <span className={styles.teamCheckbox__span}>
             <input
@@ -74,7 +76,9 @@ export default function childrenTeam() {
               id="team__2"
               value={"second"}
             />
-            <label style={{cursor: 'pointer'}} htmlFor="team__2">Состав команды</label>
+            <label style={{ cursor: "pointer" }} htmlFor="team__2">
+              Состав команды
+            </label>
           </span>
         </form>
         <ul className={styles.players__list}>
@@ -83,7 +87,14 @@ export default function childrenTeam() {
                 return (
                   <li key={id} className={styles.playersList__item}>
                     <div className={styles.personImage}>
-                      <img src={image.url} alt={image.name} />
+                      {image ? (
+                        <img src={image.url} alt={image.name} />
+                      ) : (
+                        <img
+                          src="/images/team/mainNoname.png"
+                          alt="footballUser"
+                        />
+                      )}
                     </div>
                     <span className={styles.playersItem__text}>{name}</span>
                   </li>
@@ -93,7 +104,11 @@ export default function childrenTeam() {
                 return (
                   <li key={id} className={styles.playersList__item}>
                     <div className={styles.personImage}>
-                      <img src={image.url} alt={image.name} />
+                      {image ? (
+                        <img src={image.url} alt={image.name} />
+                      ) : (
+                        <img src="/images/team/noname.png" alt="footballUser" />
+                      )}
                     </div>
                     <span className={styles.playersItem__text}>{name}</span>
                   </li>
