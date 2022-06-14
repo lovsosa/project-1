@@ -30,7 +30,7 @@
   display: grid
   grid-template-columns: repeat(2, 1fr)
 .info__item
-  height: 200px
+  height: 170px
   display: flex
   align-items: center
   justify-content: flex-start
@@ -50,3 +50,34 @@
   line-height: 40px
   font-family: 'Roboto', sans-serif
   font-weight: 300
+
+
+@media screen and (max-width: 1300px)
+  .content
+    display: block
+  .content__text
+    max-width: 100%
+  .content__image
+    max-width: 100%
+@media screen and (max-width: 1100px)
+  .content__text
+    font-size: 15px
+    line-height: 30px
+@media screen and (max-width: 700px)
+  .container
+    max-width: calc( 100% - 100px )
+  .main__title
+    font-size: 1.75rem
+  
+@media screen and (max-width: 500px)
+  .container
+    max-width: calc( 100% - 50px )
+  .main__title
+    font-size: 1.5rem
+  .content__text
+    font-size: 14px
+    line-height: 26px
+  .info 
+    grid-template-columns: repeat(1, 2fr)
+  .info__item 
+    height: 150px
