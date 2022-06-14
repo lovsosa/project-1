@@ -184,6 +184,10 @@
   color: rgba(12,64,131,1)
   svg
     max-height: 100%
+.backArrow
+  height: 0
+  width: 0
+  display: none
 @media screen and (max-width: 1400px)
   .container
     position: relative
@@ -207,16 +211,40 @@
     transform: translateX(calc( 100% + 50px)) translateY(80px)
     &.navigationVisible
       transform: translateX(50px) translateY(80px)
-
+  .backArrow
+    display: flex
+    position: relative
+    width: 80px
+    margin-top: 30px
+    align-items: center
+    justify-content: space-between
+    font-size: 0.875rem
+    font-family: 'Montserrat', sans-serif
+    text-transform: uppercase
+    font-weight: 500
+    cursor: pointer
+    svg
+      position: absolute
+      left: -25px
+      max-width: 20px
   .subNav__list
     position: absolute
+    right: 0
+    top: 0
+    width: 100%
+    height: 100vh
+    border-top: none
+    min-width: auto
+    padding-left: 60px
+    padding-top: 40px
     display: flex
     flex-direction: column
+    align-items: flex-start
+    justify-content: flex-start
     background-color: #fff
-    min-width: 600px
-    border-top: none
-    border-image: none
-    z-index: 100
+    transform: translateX(calc( 100% + 50px)) translateY(80px)
+    &.navLinkActive
+      transform: translateX(50px) translateY(80px)
 
   .subNavList__arrow,
   .navList__arrow
@@ -224,7 +252,6 @@
   .navList__link.relative,
   .navList__link,
   .subNavList__link
-    position: relative
     padding: 0
     border-top: none
     border-right: none
@@ -260,11 +287,6 @@
   .nav__list
     position: static
     margin: 30px 0 0
-  .subNav__list
-    position: relative
-    padding: 10px 0
-    top: 10px
-    left: 0
   .hamburger
     display: block
     &.hamburgerVisible

@@ -46,7 +46,22 @@ export default function NavbarFun({
   closeList,
 }) {
   const [navLinkActive, setNavLinkActive] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(false);
   const mainId = id;
+  const handleWidth = () => {
+    const screenWidth = window.screen.width;
+    console.log(screenWidth);
+    if (screenWidth < 1400) {
+      setScreenWidth(true);
+    } else {
+      setScreenWidth(false);
+    }
+  };
+  useEffect(() => {
+    handleWidth();
+    window.addEventListener("resize", handleWidth);
+    return () => window.removeEventListener("resize", handleWidth);
+  }, []);
 
   const openMenu = () => {
     let navCopy = [...nav];
@@ -100,7 +115,6 @@ export default function NavbarFun({
     }
     setNav(navCopy);
   };
-
   const SubLinkWithDoughter = ({ name, subActive, doughter, index }) => {
     const variantsChild = {
       init: {
@@ -180,6 +194,29 @@ export default function NavbarFun({
       </>
     );
   };
+  const closeSubList = () => {
+    let navCopy = [...nav];
+    const element = navCopy.findIndex((item) => {
+      if (item.id) {
+        if (item.id === mainId) {
+          return item;
+        }
+      }
+    });
+    navCopy.forEach((item) => {
+      if (item.id !== mainId) {
+        item.active = false;
+      }
+      if (item.doughter) {
+        item.doughter.forEach((item) => {
+          item.active = false;
+        });
+      }
+    });
+    navCopy[element].active = false;
+    setNavLinkActive(false);
+    setNav(navCopy);
+  };
 
   return (
     <ul className={styles.nav__list}>
@@ -221,6 +258,26 @@ export default function NavbarFun({
                 [styles.subNavLinkActive]: navLinkActive,
               })}
             >
+              {screenWidth ? (
+                <span onClick={closeSubList} className={styles.backArrow}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M7 16l-4-4m0 0l4-4m-4 4h18"
+                    />
+                  </svg>
+                  Назад
+                </span>
+              ) : null}
+
               {doughter.map(({ name, href, active, doughter }, index) => {
                 if (doughter) {
                   return (

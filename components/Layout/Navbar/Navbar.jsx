@@ -50,7 +50,6 @@ function Navbar() {
   //   setFilterNav(filNavFun);
   // }, []);
   useEffect(() => {
-    // handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -67,6 +66,9 @@ function Navbar() {
         });
       }
     });
+    if (isOpen) {
+      setOpen(false);
+    }
     setNavLink(navCopy);
   };
   const handlerScrollUp = () => {
