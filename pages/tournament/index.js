@@ -44,6 +44,9 @@ export default function tournament() {
             Футбольные турниры собирают десятки тысяч зрителей на трибунах
             стадиона и многомиллионные аудитории по телевидению.
           </p>
+          <div className={styles.futsal__image}>
+            <img className={styles.futsal__img} src='images/turnir.jpg' alt='Турниры' />
+          </div>
           <ul className={styles.tournaments}>
             {data.map(({ title, text, image, id }) => {
               return (
