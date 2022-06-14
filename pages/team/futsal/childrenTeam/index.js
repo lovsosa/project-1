@@ -51,7 +51,7 @@ export default function childrenTeam() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 className={styles.main__title}>
-        Юношеская сборная Кыргызской Республики
+        Юношеская сборная Кыргызской Республики (U-17)
       </h1>
       <div className={styles.team}>
         <form className={styles.team__radioBtn}>
@@ -64,7 +64,7 @@ export default function childrenTeam() {
               checked={checkedRadio}
               value={"first"}
             />
-            <label htmlFor="team__1">Тренерский штаб</label>
+            <label style={{cursor: 'pointer'}} htmlFor="team__1">Тренерский штаб</label>
           </span>
           <span className={styles.teamCheckbox__span}>
             <input
@@ -74,7 +74,7 @@ export default function childrenTeam() {
               id="team__2"
               value={"second"}
             />
-            <label htmlFor="team__2">Состав команды</label>
+            <label style={{cursor: 'pointer'}} htmlFor="team__2">Состав команды</label>
           </span>
         </form>
         <ul className={styles.players__list}>

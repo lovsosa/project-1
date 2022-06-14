@@ -33,6 +33,9 @@ export default function futsal() {
         ФИФА. Другим похожим видом спорта является футбол в залах, или футзал
         AMF, который проводится под эгидой AMF.
       </p>
+      <div className={styles.futsal__image}>
+        <img className={styles.futsal__img} src='images/futsal.jpg' alt='Футзал' />
+      </div>
       <div className={styles.pageLink__list}>
         {data.map(({ title, text, image, id }) => {
           return (

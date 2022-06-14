@@ -17,23 +17,31 @@
   line-height: 30px
   margin: 0 0 50px
 .pageLink__list
-  max-width: 700px
-  margin: 0 auto
+  max-width: 1000px
+  margin: 50px auto
   display: grid
-  grid-template-columns: repeat(2, 1fr)
-  gap: 0 25px
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  gap: 25px 25px
 .pageLink__item
   width: 100%
   list-style: none
 .pageLink__image
   width: 100%
-  height: 150px
+  height: 200px
   img
     width: 100%
     height: 100%
     object-fit: cover
+    border-radius: 10px
 .pageLink__title
   font-family: 'Roboto', sans-serif
   font-size: 1rem
   font-weight: 500
   margin: 10px 0
+.futsal__img
+  max-width: 100%
+  height: 700px
+  border-radius: 10px
+.futsal__image
+  max-width: 1050px
+  margin: 0 auto
