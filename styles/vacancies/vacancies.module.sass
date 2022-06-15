@@ -18,14 +18,12 @@
   font-weight: 300
   line-height: 30px
 .content__item
-  height: 100px
   display: grid
   grid-template-columns: 1fr 400px 1fr
   align-items: center
   border-bottom: 1px solid #e1e1e1
   padding-bottom: 25px
 .contentItem__post
-  justify-self: center
   align-self: center
   width: 200px
   overflow: hidden
@@ -90,7 +88,6 @@
 @media screen and (max-width: 1000px)
   .mainError__title
     font-size: 1.375rem
-
 @media screen and (max-width: 650px)
   .error__contaner
     max-width: calc( 100% - 50px )
@@ -107,3 +104,32 @@
     transform: rotate(180deg)
   100%
     transform: rotate(360deg)
+
+@media screen and (max-width: 950px)
+  .content
+    font-size: 0.875rem
+    line-height: 25px
+@media screen and (max-width: 850px)
+  .container
+    max-width: calc( 100% - 100px )
+  .content
+    font-size: 0.75rem
+    line-height: 15px
+  .content__item
+    grid-template-columns: 1fr 300px 1fr
+@media screen and (max-width: 670px)
+  .container
+    max-width: calc( 100% - 50px )
+  .content__item
+    grid-template-columns: 1fr 250px 1fr
+@media screen and (max-width: 615px)
+  .main__title
+    font-size: 1.5rem
+  .content__item
+    grid-template-columns: repeat(1, 3fr)
+    gap: 10px
+    margin-top: 15px
+  .contentItem__des
+    -webkit-line-clamp: 3
+  .container
+    margin: 95px auto 0

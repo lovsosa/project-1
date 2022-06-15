@@ -20,8 +20,8 @@
   max-width: 1000px
   margin: 50px auto
   display: grid
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
-  gap: 0 25px
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+  gap: 25px 25px
 .pageLink__item
   max-width: 100%
   list-style: none
@@ -32,15 +32,54 @@
     width: 100%
     height: 100%
     object-fit: cover
+    border-radius: 10px
 .pageLink__title
   font-family: 'Roboto', sans-serif
   font-size: 1rem
   font-weight: 500
   margin: 10px 0
 .futsal__img
-  max-width: 100%
-  height: 700px
+  width: 100%
+  height: 100%
   border-radius: 10px
+  object-fit: cover
 .futsal__image
   max-width: 1049px
+  height: 700px
   margin: 0 auto
+
+@media screen and (max-width: 1200px)
+  .futsal__image
+    height: 600px
+@media screen and (max-width: 970px)
+  .futsal__image
+    height: 500px
+  .container
+    max-width: calc( 100% - 100px )
+@media screen and (max-width: 790px)
+  .futsal__image
+    height: 400px
+@media screen and (max-width: 660px)
+  .pageLink__list
+    max-width: 900px
+  .container
+    max-width: calc( 100% - 50px )
+  .futsal__image
+    height: 300px
+@media screen and (max-width: 520px)
+  .futsal__image
+    height: 250px
+@media screen and (max-width: 390px)
+  .futsal__image
+    height: 200px
+@media screen and (max-width: 570px)
+  .container
+    margin: 95px auto 40px 
+  .pageLink__item
+    padding: 0 10px 0 10px
+@media screen and (max-width: 450px)
+  .main__content
+    font-size: 0.875rem
+    line-height: 25px
+  .main__title
+    font-size: 1.5rem

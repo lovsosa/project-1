@@ -47,8 +47,46 @@
   width: 100%
   img
     width: 100%
+    border-radius: 10px
+    border: 3px solid #0C4083
 .playersItem__text
   font-family: 'Roboto', sans-serif
   font-size: 0.875rem
   line-height: 18px
   font-weight: 500
+
+@media screen and (max-width: 995px)
+  .players__list
+    grid-template-columns: repeat(auto-fit, minmax(100px, 150px))
+@media screen and (max-width: 500px)
+  .container
+    max-width: calc( 100% - 100px )
+    margin: 95px auto 0
+  .players__list
+    margin-bottom: 40px
+@media screen and (max-width: 425px)
+  .container
+    max-width: calc( 100% - 50px )
+@media screen and (max-width: 370px)
+  .players__list
+    grid-template-columns: repeat(auto-fit, minmax(100px, 100px))
+  .personImage
+    img
+      border: 2px solid #0C4083
+@media screen and (max-width: 590px)
+  .playersItem__text
+    font-size: 0.625rem
+  .teamCheckbox__span
+    label
+      font-size: .8rem
+      cursor: pointer
+  .team__radioBtn
+    display: flex
+    flex-direction: column
+    gap: 30px
+@media screen and (max-width: 450px)
+  .content__text
+    font-size: 0.875rem
+    line-height: 25px
+  .main__title
+    font-size: 1rem
