@@ -1,7 +1,4 @@
-scrollY 50%
-hover arrow https://reactcommunity.org/react-transition-group/transition
-show nav list
-sposors
-toggle btn
-commit
-collection types
+last matches
+gallery
+loader
+versel
