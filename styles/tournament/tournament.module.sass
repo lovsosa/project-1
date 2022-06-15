@@ -39,9 +39,51 @@
   font-weight: 600
   margin: 10px 0
 .futsal__img
-  max-width: 100%
-  height: 700px
+  width: 100%
+  height: 100%
   border-radius: 10px
 .futsal__image
   max-width: 980px
+  height: 700px
   margin: 0 auto
+
+@media screen and (max-width: 1200px)
+  .futsal__image
+    height: 600px
+@media screen and (max-width: 970px)
+  .futsal__image
+    height: 500px
+  .container
+    max-width: calc( 100% - 100px )
+@media screen and (max-width: 790px)
+  .futsal__image
+    height: 400px
+@media screen and (max-width: 660px)
+  .pageLink__list
+    max-width: 900px
+  .futsal__image
+    height: 320px
+@media screen and (max-width: 520px)
+  .futsal__image
+    height: 270px
+@media screen and (max-width: 390px)
+  .futsal__image
+    height: 200px
+@media screen and (max-width: 570px)
+  .container
+    max-width: calc( 100% - 50px )
+  .tournaments__item
+    padding: 0 15px 0 15px
+  .tournaments
+    max-width: 300px
+    grid-template-columns: repeat(1, 2fr)
+  .pageLink__item
+    padding: 0 10px 0 10px
+@media screen and (max-width: 450px)
+  .main__content
+    font-size: 0.875rem
+    line-height: 25px
+  .main__title
+    font-size: 1.5rem
+  .container
+    margin: 95px auto 40px
