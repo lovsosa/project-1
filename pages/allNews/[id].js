@@ -90,8 +90,9 @@ export default function PostPage({ newsPost }) {
       </header>
       <style jsx>{`
         .postPage__container {
-          max-width: ${postImage.width + 450 + "px"};
+          max-width: ${postImage.width + 550 + "px"};
           margin: 110px auto;
+          padding: 0 30px 0 30px;
         }
         .form--for-font {
           margin: 35px 0;
@@ -100,7 +101,7 @@ export default function PostPage({ newsPost }) {
           justify-content: space-between;
         }
         .description {
-          width: ${postImage.width + "px"};
+          max-width: ${postImage.width + "px"};
         }
         .description img {
           width: 100%;
@@ -118,7 +119,7 @@ export default function PostPage({ newsPost }) {
         }
         .description__text p:nth-child(2) {
           font-size: 0.875rem;
-          margin-top: 100px;
+          margin-top: 20px;
           background-color: #0c4083;
           color: #fff;
           display: inline-block;
@@ -181,6 +182,71 @@ export default function PostPage({ newsPost }) {
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           word-wrap: break-word;
+        }
+        @media screen and (max-width: 1280px) {
+          .post--page {
+            max-width: 800px;
+            display: block;
+            margin: 0 auto;
+          }
+          .news__sidebar {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+          }
+        }
+        @media screen and (max-width: 800px) {
+          .news__sidebar {
+            grid-template-columns: repeat(1, 2fr);
+          }
+        }
+        @media screen and (max-width: 600px) {
+          .news__sidebar p {
+            line-height: 25px;
+          }
+        }
+        @media screen and (max-width: 750px) {
+          .description h2 {
+            font-size: 20px;
+          }
+          .description__text p {
+          font-weight: 400;
+          line-height: 25px;
+          }
+          .postPage__container {
+            margin: 50px auto;
+            padding: 0 15px 0 15px;
+          }
+        }
+        @media screen and (max-width: 500px) {
+          .news__sidebar {
+            gap: 8px;
+          }
+          .description h2 {
+            font-size: 18px;
+          }
+          .description__text p {
+            font-size: 12px;
+            line-height: 22.5px;
+          }
+          .form--for-font {
+            margin: 18px 0;
+          }
+          .news__sidebar p {
+            line-height: 17px;
+            font-size: 12px;
+            -webkit-line-clamp: 3;
+          }
+        }
+        @media screen and (max-width: 400px) {
+          .description h2 {
+            font-size: 15px;
+          }
+          .description__text p {
+            font-size: 12px;
+            line-height: 20px;
+          }
         }
       `}</style>
     </>
