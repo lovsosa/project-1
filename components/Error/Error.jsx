@@ -11,10 +11,7 @@ export default function Error() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.error__item}>
-        <img
-          src="/images/icons/6-teared-up-sad-soccer-ball-emoji-cartoon-clipart.jpg"
-          alt="Error"
-        />
+        <img src="/images/icons/error-ball.png" alt="Error" />
         <h1 className={styles.main__title}>Извините, произошла ошибка</h1>
         <span className={styles.main__text}>Попробуйте позже</span>
       </div>

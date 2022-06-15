@@ -8,10 +8,10 @@
   height: 100vh
   z-index: 100
   background-color: #fff
+  display: flex
+  align-items: center
+  justify-content: center
 .ballItem
-  position: relative
-  top: calc( 50% - 70px )
-  left: calc( 50% - 40px )
   max-width: 80px
   height: 140px
   display: flex
@@ -21,7 +21,8 @@
 .ballLoader
   width: 100%
   z-index: 101
-  margin-bottom: 5px
+  margin-bottom: 10px
+  animation: ball 3s infinite
 .ballDes
   &::before
     content: "Загрузка"

@@ -50,7 +50,6 @@ export default function NavbarFun({
   const mainId = id;
   const handleWidth = () => {
     const screenWidth = window.screen.width;
-    console.log(screenWidth);
     if (screenWidth < 1400) {
       setScreenWidth(true);
     } else {
