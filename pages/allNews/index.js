@@ -57,6 +57,12 @@ export default function allNews() {
                     </Link>
                   );
                 })}
+                <button
+                  className={styles.usualPost__btn}
+                  onClick={() => setAddNews(addNews + 5)}
+                >
+                  Добавить еще
+                </button>
               </ul>
               <Masonry
                 breakpointCols={2}

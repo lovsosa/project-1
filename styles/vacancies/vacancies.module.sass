@@ -9,10 +9,10 @@
   font-family: 'Oswald', sans-serif
   font-size: 2.125rem
   font-weight: 600
-  margin: 0 0 15px
+  margin: 0 0 55px
 .content
   max-width: 800px
-  margin: 25px auto 0
+  margin: 0 auto 0
   font-family: 'Roboto', sans-serif
   font-size: 1rem
   font-weight: 300
@@ -27,6 +27,14 @@
 .contentItem__post
   justify-self: center
   align-self: center
+  width: 200px
+  overflow: hidden
+  text-overflow: ellipsis
+  display: -webkit-box
+  -webkit-line-clamp: 4
+  -webkit-box-orient: vertical
+  word-wrap: break-word
+  overflow: hidden
 .contentItem__des
   padding: 0 15px
   justify-self: center
@@ -37,15 +45,27 @@
   -webkit-line-clamp: 2
   -webkit-box-orient: vertical
   word-wrap: break-word
+  width: 200px
+  overflow: hidden
 .contentItem__number
   justify-self: center
   align-self: center
+  width: 200px
+  overflow: hidden
+  text-overflow: ellipsis
+  display: -webkit-box
+  -webkit-line-clamp: 4
+  -webkit-box-orient: vertical
+  word-wrap: break-word
+  overflow: hidden
 
 .error__contaner
+  max-width: calc( 100% - 100px )
+  margin: 0 auto
   display: flex
   justify-content: center
   align-items: center
-  position: fixed
+  position: relative
   top: 0
   left: 0
   width: 100%
@@ -58,7 +78,32 @@
   align-items: center
   img
     max-width: 80px
+    animation: ball 3s infinite
 .mainError__title
   margin-top: 15px
-  font-size: 1.375rem
   color: #8c8c8c
+  text-align: center
+  font-size: 1.375rem
+@media screen and (min-width: 1500px)
+  .mainError__title
+    font-size: 1.625rem
+@media screen and (max-width: 1000px)
+  .mainError__title
+    font-size: 1.375rem
+
+@media screen and (max-width: 650px)
+  .error__contaner
+    max-width: calc( 100% - 50px )
+  .error__item
+    img
+      max-width: 60px
+  .mainError__title
+    font-size: 1rem
+
+@keyframes ball
+  0%
+    transform: rotate(0)
+  50%
+    transform: rotate(180deg)
+  100%
+    transform: rotate(360deg)
