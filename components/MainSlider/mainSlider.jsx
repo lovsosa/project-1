@@ -7,6 +7,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/bundle";
 import styles from "../../styles/Home.module.sass";
+
 export default function MainSlider() {
   return (
     <Swiper
