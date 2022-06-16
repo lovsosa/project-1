@@ -60,20 +60,56 @@ let teamCartVar = {
 };
 export default function TeamTable() {
   const [teamHere, setTeamHere] = useState(null);
+  const [lastMatch, setLastMatch] = useState(null);
   useEffect(() => {
     const getTeamTables = async () => {
       try {
-        const res = await axios.get("/team-tables?populate=TeamIcon");
+        const res = await axios.get(
+          "/team-tables?pagination[pageSize]=10&populate=TeamIcon"
+        );
         if (!res.data) {
           throw new Error();
         }
-
-        setTeamHere([...res.data.data]);
+        let teamSort = res.data.data.sort(function (a, b) {
+          if (a.Points > b.Points) {
+            return 1;
+          }
+          if (a.Points < b.Points) {
+            return -1;
+          }
+          return 0;
+        });
+        let teamReverse = teamSort.reverse();
+        setTeamHere([...teamReverse]);
       } catch (error) {
         console.log(error);
       }
     };
     getTeamTables();
+    const getLastMatches = async () => {
+      try {
+        const res = await axios.get(
+          "/poslednie-matchis?pagination[pageSize]=3&populate=firstTeam&populate=secondTeam"
+        );
+        if (!res.data) {
+          throw new Error();
+        }
+        // let teamSort = res.data.data.sort(function (a, b) {
+        //   if (a.Points > b.Points) {
+        //     return 1;
+        //   }
+        //   if (a.Points < b.Points) {
+        //     return -1;
+        //   }
+        //   return 0;
+        // });
+        // let teamReverse = teamSort.reverse();
+        setLastMatch([...res.data.data]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getLastMatches();
   }, []);
   if (teamHere) {
     return (
@@ -83,45 +119,58 @@ export default function TeamTable() {
         </h2>
         <section className={styles.bestTeam}>
           <ul className={styles.lastMatches}>
-            <li className={styles.lastMatches__item}>
-              <h5 className={styles.versusDate}>8 июня</h5>
-              <div className={styles.teamVersus}>
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 1,
-                  }}
-                  variants={firstTeamVar}
-                  custom="0"
-                  className={styles.first__team}
-                >
-                  <div className={styles.vsTeamIcon__container}>
-                    <img src="/images/team/Kyrgyztan.jpg" alt="Kyrgyztan" />
-                  </div>
-                  <span>Кыргызстан</span>
-                </motion.div>
-                <span className={styles.versus}>VS</span>
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{
-                    once: true,
-                    amount: 1,
-                  }}
-                  variants={secondTeamVar}
-                  custom="0"
-                  className={styles.second__team}
-                >
-                  <div className={styles.vsTeamIcon__container}>
-                    <img src="/images/team/singapur.png" alt="singapur" />
-                  </div>
-                  <span>Сингапур</span>
-                </motion.div>
-              </div>
-            </li>
-            <li className={styles.lastMatches__item}>
+            {lastMatch.map(
+              ({
+                firstTeamName,
+                secondTeamName,
+                secondTeam,
+                firstTeam,
+                date,
+                id,
+              }) => {
+                return (
+                  <li key={id} className={styles.lastMatches__item}>
+                    <h5 className={styles.versusDate}>{date}</h5>
+                    <div className={styles.teamVersus}>
+                      <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{
+                          once: true,
+                          amount: 1,
+                        }}
+                        variants={firstTeamVar}
+                        custom="0"
+                        className={styles.first__team}
+                      >
+                        <div className={styles.vsTeamIcon__container}>
+                          <img src={firstTeam.url} alt={firstTeam.name} />
+                        </div>
+                        <span>{firstTeamName}</span>
+                      </motion.div>
+                      <span className={styles.versus}>VS</span>
+                      <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{
+                          once: true,
+                          amount: 1,
+                        }}
+                        variants={secondTeamVar}
+                        custom="0"
+                        className={styles.second__team}
+                      >
+                        <div className={styles.vsTeamIcon__container}>
+                          <img src={secondTeam.url} alt={secondTeam.name} />
+                        </div>
+                        <span>{secondTeamName}</span>
+                      </motion.div>
+                    </div>
+                  </li>
+                );
+              }
+            )}
+            {/* <li className={styles.lastMatches__item}>
               <h5 className={styles.versusDate}>11 июня</h5>
               <div className={styles.teamVersus}>
                 <motion.div
@@ -199,7 +248,7 @@ export default function TeamTable() {
                   <span>Таджикистан</span>
                 </motion.div>
               </div>
-            </li>
+            </li> */}
           </ul>
           <ul className={styles.team__list}>
             <div className={styles.team__item}>
@@ -230,9 +279,11 @@ export default function TeamTable() {
                         className={styles.team__head}
                         style={{ justifyContent: "flex-start" }}
                       >
-                        <div>
-                          <img src={TeamIcon.url} alt={TeamIcon.name} />
-                        </div>
+                        {TeamIcon ? (
+                          <div>
+                            <img src={TeamIcon.url} alt={TeamIcon.name} />
+                          </div>
+                        ) : null}
                         <p>«{TeamName}»</p>
                       </span>
                       <span>{Games}</span>
