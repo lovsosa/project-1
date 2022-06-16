@@ -13,7 +13,7 @@ export default function Galleries() {
     const getGalleries = async () => {
       try {
         const res = await axios.get(
-          `/gallery?sort=publishedAt:DESC&pagination[pageSize]=${addMore}&populate=Image`
+          `/gallery?sort=publishedAt:DESC&populate=Image`
         );
         if (!res.data.data.Image) {
           throw new Error();

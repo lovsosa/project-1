@@ -10,7 +10,7 @@ import Error from "../../components/Error/Error";
 export default function AllNews() {
   const [postWithImage, setPostWithImage] = useState(null);
   const [usualPost, setUsualPost] = useState(null);
-  const [addNews, setAddNews] = useState(10);
+  const [addNews, setAddNews] = useState(20);
   useEffect(() => {
     const getLastNews = async () => {
       try {
