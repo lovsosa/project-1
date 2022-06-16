@@ -3,19 +3,6 @@ import React from "react";
 import Head from "next/head";
 
 export default function Programs() {
-  // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const res = await axios.get(`/trenerskoe-obrazovanies?populate=fail`);
-  //       if (!res.data) {
-  //         throw new Error();
-  //       }
-  //       setData(res.data.data);
-  //     } catch (error) {}
-  //   };
-  //   getData();
-  // }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -59,9 +46,9 @@ export default function Programs() {
           <p className={styles.contentItem__text}>
             По системе статусности АФК для академий футбола максимальное
             количество «Звезд» - 3. В Азии такой статус имеет только академия
-            "Aspire" в Катаре. Ассоциация футбола Узбекистана была включена в
-            Программу ранее. Три футбольных академии этой страны удостоились
-            статуса «двух звезд».
+            &ldquo;Aspire&rdquo; в Катаре. Ассоциация футбола Узбекистана была
+            включена в Программу ранее. Три футбольных академии этой страны
+            удостоились статуса «двух звезд».
           </p>
           <p className={styles.contentItem__text}>
             Академия футбола имени Асылбека Момунова в городе Ош, как база для

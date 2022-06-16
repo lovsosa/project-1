@@ -14,7 +14,7 @@ export default function LeaguesPage(pageData) {
       <h1 className={styles.main__title}>{pageData.title}</h1>
       <div className={styles.content}>
         <div className={styles.content__image}>
-          <img src={pageData.image.url} alt={pageData.image.name} />
+          <img src={pageData.image.url} alt={pageData.title} />
         </div>
         <p className={styles.content__text}>{pageData.text}</p>
       </div>

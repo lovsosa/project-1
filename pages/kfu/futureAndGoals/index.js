@@ -1,5 +1,4 @@
 import Head from "next/head";
-import React, { Component } from "react";
 import styles from "../../../styles/kfu/futureAndGoals.module.sass";
 import React from "react";
 

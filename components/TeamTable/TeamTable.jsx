@@ -60,7 +60,7 @@ let teamCartVar = {
 };
 export default function TeamTable() {
   const [teamHere, setTeamHere] = useState(null);
-  const [lastMatch, setLastMatch] = useState(null);
+  const [lastMatch, setLastMatch] = useState([]);
   useEffect(() => {
     const getTeamTables = async () => {
       try {
