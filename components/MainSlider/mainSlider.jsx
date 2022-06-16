@@ -16,14 +16,6 @@ export default function MainSlider() {
         type: "progressbar",
         progressbarFillClass: styles.swiperPaginationProgressbarFill,
       }}
-      // navigation={{
-      //   nextEl: styles.swiperButtonNext,
-      //   prevEl: styles.swiperButtonPrev,
-      // }}
-      // navigation={{
-      //   nextEl: ".swiper-button-next",
-      //   prevEl: ".swiper-button-prev",
-      // }}
       navigation
       breakpoints={{
         800: {

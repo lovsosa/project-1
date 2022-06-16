@@ -7,7 +7,7 @@ import Sponsors from "../components/Sponsors/Sponsors";
 import Gallery from "../components/Gallery/Gallery";
 import cn from "classnames";
 import Link from "next/link";
-import MainSlider from "../components/mainSlider/mainSlider";
+import MainSlider from "../components/MainSlider/MainSlider";
 import Loader from "../components/Loader/Loader";
 // import "./styles.css";
 
