@@ -8,8 +8,6 @@ import Gallery from "../components/Gallery/Gallery";
 import cn from "classnames";
 import Link from "next/link";
 import MainSlider from "../components/MainSlider/MainSlider";
-import Loader from "../components/Loader/Loader";
-// import "./styles.css";
 
 export default function Home() {
   const [mainTitle, setMainTitle] = useState([
