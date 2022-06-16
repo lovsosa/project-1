@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import styles from "../../../styles/kfu/pressCenter.module.sass";
 
-export default function pressCenter() {
+export default function PressCenter() {
   return (
     <div className={styles.container}>
       <Head>

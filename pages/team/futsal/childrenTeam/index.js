@@ -5,7 +5,7 @@ import axios from "../../../../api/axios.news";
 import Error from "../../../../components/Error/Error";
 import Loader from "../../../../components/Loader/Loader";
 
-export default function childrenTeam() {
+export default function ChildrenTeam() {
   const [firstData, setFirstData] = useState(null);
   const [secondData, setSecondData] = useState(null);
   const [checkedRadio, setCheckedRadio] = useState(true);

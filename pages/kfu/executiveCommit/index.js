@@ -6,7 +6,7 @@ import Masonry from "react-masonry-css";
 import Loader from "../../../components/Loader/Loader";
 import Error from "../../../components/Error/Error";
 
-export default function executiveCommit() {
+export default function ExecutiveCommit() {
   const [person, setPerson] = useState(null);
   useEffect(() => {
     const getPerson = async () => {

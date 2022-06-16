@@ -3,7 +3,7 @@ import Head from "next/head";
 import React from "react";
 import styles from "../../styles/projects/projectsPage.module.sass";
 
-export default function leaguesPage(pageData) {
+export default function projectsPage(pageData) {
   return (
     <div className={styles.container}>
       <Head>

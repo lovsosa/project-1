@@ -6,7 +6,7 @@ import Sponsors from "../../../components/Sponsors/Sponsors";
 import Loader from "../../../components/Loader/Loader";
 import Error from "../../../components/Error/Error";
 
-export default function partners() {
+export default function Partners() {
   const [partners, setPartners] = useState(null);
   useEffect(() => {
     const getPartners = async () => {

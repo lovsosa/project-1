@@ -5,7 +5,7 @@ import styles from "../../../styles/kfu/kfuSecretariat.module.sass";
 import Loader from "../../../components/Loader/Loader";
 import Error from "../../../components/Error/Error";
 
-export default function kfuSecretariat() {
+export default function KfuSecretariat() {
   const [secretariat, setSecretariat] = useState(null);
   useEffect(() => {
     const getSecretariat = async () => {

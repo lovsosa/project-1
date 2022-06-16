@@ -6,7 +6,7 @@ import Head from "next/head";
 import Loader from "../../components/Loader/Loader";
 import Error from "../../components/Error/Error";
 
-export default function galleries() {
+export default function Galleries() {
   const [galleries, setGalleries] = useState(null);
   const [addMore, setAddMore] = useState(20);
   useEffect(() => {

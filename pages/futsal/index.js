@@ -6,7 +6,7 @@ import Link from "next/link";
 import Error from "../../components/Error/Error";
 import Loader from "../../components/Loader/Loader";
 
-export default function futsal() {
+export default function Futsal() {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {

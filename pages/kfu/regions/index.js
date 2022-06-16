@@ -5,7 +5,7 @@ import styles from "../../../styles/kfu/regions.module.sass";
 import Loader from "../../../components/Loader/Loader";
 import Error from "../../../components/Error/Error";
 
-export default function regions() {
+export default function Regions() {
   const [regions, setRegions] = useState(null);
   useEffect(() => {
     const getRegions = async () => {

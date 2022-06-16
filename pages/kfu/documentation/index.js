@@ -5,7 +5,7 @@ import styles from "../../../styles/kfu/documentation.module.sass";
 import Loader from "../../../components/Loader/Loader";
 import Error from "../../../components/Error/Error";
 
-export default function documentation() {
+export default function Documentation() {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {

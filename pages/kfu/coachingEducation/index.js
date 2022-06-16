@@ -5,7 +5,7 @@ import styles from "../../../styles/kfu/coachingEducation.module.sass";
 import Loader from "../../../components/Loader/Loader";
 import Error from "../../../components/Error/Error";
 
-export default function coachingEducation() {
+export default function CoachingEducation() {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {

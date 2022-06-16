@@ -5,7 +5,7 @@ import axios from "../../api/axios.news";
 import Error from "../../components/Error/Error";
 import Loader from "../../components/Loader/Loader";
 
-export default function vacancies() {
+export default function Vacancies() {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {

@@ -5,7 +5,7 @@ import styles from "../../styles/tournament/tournament.module.sass";
 import Link from "next/link";
 import Loader from "../../components/Loader/Loader";
 import Error from "../../components/Error/Error";
-export default function tournament() {
+export default function Tournament() {
   const [data, setData] = useState(null);
   useEffect(() => {
     const getData = async () => {
@@ -45,7 +45,11 @@ export default function tournament() {
             стадиона и многомиллионные аудитории по телевидению.
           </p>
           <div className={styles.futsal__image}>
-            <img className={styles.futsal__img} src='images/turnir.jpg' alt='Турниры' />
+            <img
+              className={styles.futsal__img}
+              src="images/turnir.jpg"
+              alt="Турниры"
+            />
           </div>
           <ul className={styles.tournaments}>
             {data.map(({ title, text, image, id }) => {

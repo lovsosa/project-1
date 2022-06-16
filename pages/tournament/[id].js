@@ -3,7 +3,7 @@ import Head from "next/head";
 import React from "react";
 import styles from "../../styles/tournament/tournamentPage.module.sass";
 
-export default function tournamentPage(pageData) {
+export default function TournamentPage(pageData) {
   return (
     <div className={styles.container}>
       <Head>

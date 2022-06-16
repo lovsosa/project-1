@@ -7,7 +7,7 @@ import Masonry from "react-masonry-css";
 import Loader from "../../components/Loader/Loader";
 import Error from "../../components/Error/Error";
 
-export default function allNews() {
+export default function AllNews() {
   const [postWithImage, setPostWithImage] = useState(null);
   const [usualPost, setUsualPost] = useState(null);
   const [addNews, setAddNews] = useState(10);

@@ -3,7 +3,7 @@ import Head from "next/head";
 import React from "react";
 import styles from "../../styles/futsal/futsalPage.module.sass";
 
-export default function footzalPage(pageData) {
+export default function FootzalPage(pageData) {
   return (
     <div className={styles.container}>
       <Head>

@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import styles from "../../../styles/kfu/about.module.sass";
 
-export default function about() {
+export default function About() {
   return (
     <div className={styles.about__container}>
       <Head>

@@ -5,7 +5,7 @@ import styles from "../../../styles/team/football.module.sass";
 import Loader from "../../../components/Loader/Loader";
 import Error from "../../../components/Error/Error";
 
-export default function football() {
+export default function Football() {
   const [firstData, setFirstData] = useState(null);
   const [secondData, setSecondData] = useState(null);
   const [checkedRadio, setCheckedRadio] = useState(true);

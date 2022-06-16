@@ -2,7 +2,7 @@ import styles from "../../../styles/kfu/programs.module.sass";
 import React from "react";
 import Head from "next/head";
 
-export default function programs() {
+export default function Programs() {
   // const [data, setData] = useState([]);
   // useEffect(() => {
   //   const getData = async () => {
